@@ -5,30 +5,37 @@ import com.example.bookbookw71.model.Member;
 import com.example.bookbookw71.model.MemberRoleEnum;
 import com.example.bookbookw71.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
 public class MemberService {
+
+    private final PasswordEncoder passwordEncoder;
     private final MemberRepository memberRepository;
     private static final String ADMIN_TOKEN = "AAABnv/xRVklrnYxKZ0aHgTBcXukeZygoC";
 
     @Autowired
-    public MemberService(MemberRepository memberRepository) {
+    public MemberService(MemberRepository memberRepository,PasswordEncoder passwordEncoder) {
         this.memberRepository = memberRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public void registerMember(SignupRequestDto requestDto) {
-        String membername = requestDto.getMembername();
-        String password = requestDto.getPassword();
+        String nickname = requestDto.getNickname();
         // 회원 ID 중복 확인
-        Optional<Member> found = memberRepository.findByMembername(membername);
+        Optional<Member> found = memberRepository.findByNickname(nickname);
         if (found.isPresent()) {
             throw new IllegalArgumentException("중복된 사용자 ID 가 존재합니다.");
         }
-
+        //패스워드 암호화
+        String password = passwordEncoder.encode(requestDto.getPassword());
         String email = requestDto.getEmail();
+
 //        // 사용자 ROLE 확인
 //        MemberRoleEnum role = MemberRoleEnum.MEMBER;
 //        if (requestDto.isAdmin()) {
@@ -37,8 +44,9 @@ public class MemberService {
 //            }
 //            role = MemberRoleEnum.ADMIN;
 //        }
-
-        Member member = new Member(membername, password, email, role);
+        MemberRoleEnum role = MemberRoleEnum.MEMBER;
+        Member member = new Member(nickname, password, email, role);
         memberRepository.save(member);
     }
+
 }

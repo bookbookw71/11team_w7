@@ -33,4 +33,5 @@ public class MemberController {
     public String registerMember(SignupRequestDto requestDto) {
         memberService.registerMember(requestDto);
         return "redirect:/api/member/login";
+    }
 }
