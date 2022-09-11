@@ -26,9 +26,9 @@ public class MemberService {
     }
 
     public void registerMember(SignupRequestDto requestDto) {
-        String nickname = requestDto.getNickname();
+        String username = requestDto.getUsername();
         // 회원 ID 중복 확인
-        Optional<Member> found = memberRepository.findByNickname(nickname);
+        Optional<Member> found = memberRepository.findByUsername(Username);
         if (found.isPresent()) {
             throw new IllegalArgumentException("중복된 사용자 ID 가 존재합니다.");
         }
@@ -45,7 +45,7 @@ public class MemberService {
 //            role = MemberRoleEnum.ADMIN;
 //        }
         MemberRoleEnum role = MemberRoleEnum.MEMBER;
-        Member member = new Member(nickname, password, email, role);
+        Member member = new Member(username, password, email, role);
         memberRepository.save(member);
     }
 

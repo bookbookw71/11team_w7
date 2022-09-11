@@ -1,10 +1,9 @@
 package com.example.bookbookw71.model;
 
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.*;
 
 @Setter
 @Getter
@@ -17,7 +16,7 @@ public class Member {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String nickname;
+    private String username;
 
     @Column(nullable = false)
     private String password;
@@ -29,8 +28,8 @@ public class Member {
     @Enumerated(value = EnumType.STRING)
     private MemberRoleEnum role;
 
-    public Member(String nickname, String password, String email, MemberRoleEnum role) {
-        this.nickname = nickname;
+    public Member(String username, String password, String email, MemberRoleEnum role) {
+        this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;

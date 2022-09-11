@@ -26,8 +26,8 @@ public class MemberDetailsImpl implements UserDetails {
     }
 
     @Override
-    public String getNickname() {
-        return member.getNickname();
+    public String getUsername() {
+        return member.getUsername();
     }
 
     @Override
