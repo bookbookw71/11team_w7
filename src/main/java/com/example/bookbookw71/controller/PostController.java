@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController //Json으로 데이터 주고받음
 public class PostController {
 
@@ -32,7 +34,7 @@ public class PostController {
     //설정 변경
     @PutMapping("/api/auth/post/{postId}")
     public Long updatePost(@PathVariable Long id, @RequestBody PostRequestDto requestDto){
-        Post post = postService.updatePost(id,requestDto);
+        Post post = postService.updatePost(requestDto,id);
 
         return post.getUserId();
     }
