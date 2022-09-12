@@ -1,6 +1,5 @@
 package com.example.bookbookw71.service;
 
-import com.example.bookbookw71.dto.KakaoMemberInfoDto;
 import com.example.bookbookw71.dto.SignupRequestDto;
 import com.example.bookbookw71.model.Member;
 import com.example.bookbookw71.model.MemberRoleEnum;
@@ -17,7 +16,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;

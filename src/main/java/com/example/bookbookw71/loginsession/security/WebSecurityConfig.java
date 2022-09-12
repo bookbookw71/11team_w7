@@ -1,7 +1,6 @@
-package com.example.bookbookw71.config;
+package com.example.bookbookw71.loginsession.security;
 
 
-import com.example.bookbookw71.loginsession.jwt.filter.JwtAuthFilter;
 import com.example.loginsession.jwt.filter.JwtAuthFilter;
 import com.example.loginsession.jwt.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
