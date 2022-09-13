@@ -62,7 +62,7 @@ public class SearchService {
         String url = getUrl(search); //args를 이 부분을 request로 받도록 수정
 
         SearchService api = new SearchService();
-        api.parseXml(url);
+//        api.parseXml(url);
 
         for(Item item : api.Items){
             System.out.println(item.title + " : " + item.link);
@@ -88,12 +88,12 @@ public class SearchService {
 
 
 
-    public void parseXml(String xmlUrl) throws Exception {
-        SAXParserFactory spf = SAXParserFactory.newInstance();
-        SAXParser sp = spf.newSAXParser();
-        ParserAdapter pa = new ParserAdapter(sp.getParser());
-        pa.setContentHandler((ContentHandler) this);
-        pa.parse(xmlUrl);
-    }
+//    public void parseXml(String xmlUrl) throws Exception {
+//        SAXParserFactory spf = SAXParserFactory.newInstance();
+//        SAXParser sp = spf.newSAXParser();
+//        ParserAdapter pa = new ParserAdapter(sp.getParser());
+//        pa.setContentHandler((ContentHandler) this);
+//        pa.parse(xmlUrl);
+//    }
 
 }

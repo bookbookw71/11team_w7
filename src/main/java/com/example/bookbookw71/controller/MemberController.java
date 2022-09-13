@@ -45,6 +45,7 @@ public class MemberController {
     public ResponseEntity<Message> login(@RequestBody @Valid LoginRequestDto requestDto,
                                          HttpServletResponse response
     ) {
+        System.out.println("gkkkadksakdas");
         return memberService.login(requestDto, response);
     }
 

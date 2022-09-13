@@ -1,3 +1,4 @@
+
 plugins {
     id 'org.springframework.boot' version '2.7.3'
     id 'io.spring.dependency-management' version '1.0.13.RELEASE'
@@ -31,10 +32,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
-
     //json 추가
     implementation group: 'org.json', name: 'json', version: '20160810'
-
 
 //    implementation 'io.jsonwebtoken:jjwt:0.9.1'
     // @NotBlank 등을 사용한 유효성 검사
@@ -54,3 +53,4 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+

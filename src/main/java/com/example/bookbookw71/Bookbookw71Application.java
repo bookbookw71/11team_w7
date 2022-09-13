@@ -9,7 +9,7 @@ public class Bookbookw71Application {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Bookbookw71Application.class, args);
-        SearchService.printSearch("bts");
+//        SearchService.printSearch("bts");
     }
 
 }
