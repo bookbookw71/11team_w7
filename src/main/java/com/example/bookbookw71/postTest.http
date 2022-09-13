@@ -20,14 +20,14 @@ Content-Type: application/json
 
 ######## post 작성
 POST http://localhost:8080/api/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTAxOTU3fQ.j3TUS6GSnqtQLMgduNtXMtpVayZpknJ4GMg3APoc9js
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MDQ5NTd9.EFGvzFLWc-ayH4uYyUP4mFeck-TcuVD96xGse0UayYM
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTAzMjIwfQ.huhAVxE53WMqeE19iHIkAKirW7LHm8PBcdxP6fNS_BY
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MDYyMjB9.BlgSRvBZ2OVJFaxMXrAOpg_wRn0O751PrxLLGllk0lI
 Content-Type: application/json
 
 {
-  "title": "책제목2",
-  "username": "유저네임2",
-  "content": "책 상세 내용2",
+  "title": "책제목1",
+  "username": "유저네임1",
+  "content": "책 상세 내용1",
   "imageUrl": "url",
   "bookPage": 124,
   "score": 2,
@@ -40,3 +40,18 @@ Content-Type: application/json
 GET http://localhost:8080/api/post
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTAxOTU3fQ.j3TUS6GSnqtQLMgduNtXMtpVayZpknJ4GMg3APoc9js
 Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MDQ5NTd9.EFGvzFLWc-ayH4uYyUP4mFeck-TcuVD96xGse0UayYM
+
+
+######## 상세 포스트 조회
+GET http://localhost:8080/api/post/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTAxOTU3fQ.j3TUS6GSnqtQLMgduNtXMtpVayZpknJ4GMg3APoc9js
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MDQ5NTd9.EFGvzFLWc-ayH4uYyUP4mFeck-TcuVD96xGse0UayYM
+
+######## 포스트 삭제
+DELETE http://localhost:8080/api/post/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTAxOTU3fQ.j3TUS6GSnqtQLMgduNtXMtpVayZpknJ4GMg3APoc9js
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MDQ5NTd9.EFGvzFLWc-ayH4uYyUP4mFeck-TcuVD96xGse0UayYM
+
+
+
+

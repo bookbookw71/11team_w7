@@ -12,6 +12,7 @@ import org.webjars.NotFoundException;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -66,24 +67,43 @@ public class PostService {
         return ResponseDto.success(responseDtos);
     }
 
+    public ResponseDto<?> getOnePost(Long postId) {
+        Optional<Post> optionalPost=postRepository.findById(postId);
+        Post post=optionalPost.get();
 
-//
-//
-//    //아래 부분은 그냥 response 바디에 안 들어가는 형태
-//    public List<Post> getAll() {
-//        return postRepository.findAll();
-//    }
-//
-//    public Post getById(Long id) throws NotFoundException {
-//        Post post = postRepository.get(id).orElseThrow(() -> new NotFoundException("게시글을 찾을 수 없습니다."));
-//        return post;
-//    }
-//
-//    public void deleteById(Long id) throws NotFoundException {
-//        postRepository.get(id).orElseThrow(() -> new NotFoundException("게시글을 찾을 수 없습니다."));
-//        postRepository.deleteById(id);
-//    }
+        return ResponseDto.success(
+                PostResponse.builder()
+                        .id(post.getId())
+                        .title(post.getTitle())
+                        .content(post.getContent())
+                        .username(post.getUsername())
+                        .imageUrl(post.getImageUrl())
+                        .bookPage(post.getBookPage())
+                        .score(post.getScore())
+                        .startTime(post.getStartTime())
+                        .endTime(post.getEndTime())
+                        .createdAt(post.getCreatedAt())
+                        .modifiedAt(post.getModifiedAt())
+                        .build()
+        );
+    }
+
+    public void deletePost(Long postId){
+        //작성자 확인, 토큰확인, 존재하는 게시글 여부 확인 필요함
+//        Optional<Post> optionalPost=postRepository.findById(postId);
+//        Post post=optionalPost.get();
+
+        System.out.println("포스트 지우기 시도");
+        postRepository.deleteById(postId);
+
+
+    }
+
 
     //TODO: post 수정기능 구현 해야 함.
+//    public ResponseDto<?> updatePost(Long postId, PostRequestDto requestDto){
+//
+//    }
+
 
 }

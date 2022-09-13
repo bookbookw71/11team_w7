@@ -7,7 +7,10 @@ import com.example.bookbookw71.repository.MemberRepository;
 import com.example.bookbookw71.search.SearchService;
 import com.example.bookbookw71.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RequiredArgsConstructor
 @RestController
@@ -31,7 +34,15 @@ public class PostController {
     }
 
 
+    @GetMapping("/api/post/{postId}")
+    public ResponseDto<?> getOnePost(@PathVariable Long postId) {
+        return postService.getOnePost(postId);
+    }
 
+    @DeleteMapping("/api/post/{postId}")
+    public void deletePost(@PathVariable Long postId) {
+        postService.deletePost(postId);
+    }
 
 }
 
