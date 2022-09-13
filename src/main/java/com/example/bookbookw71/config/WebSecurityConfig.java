@@ -2,8 +2,7 @@ package com.example.bookbookw71.config;
 
 
 import com.example.bookbookw71.loginsession.jwt.filter.JwtAuthFilter;
-import com.example.loginsession.jwt.filter.JwtAuthFilter;
-import com.example.loginsession.jwt.util.JwtUtil;
+import com.example.bookbookw71.loginsession.jwt.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
