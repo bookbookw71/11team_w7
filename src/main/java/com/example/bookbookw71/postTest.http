@@ -1,0 +1,36 @@
+######## 회원가입1
+POST http://localhost:8080/api/member/signup
+Content-Type: application/json
+
+{
+  "username":"dnsielf",
+  "email":"test2@naver.com",
+  "password":"password123"
+}
+
+######## 로그인1
+POST http://localhost:8080/api/member/login
+Content-Type: application/json
+
+{
+  "username":"dnsielf",
+  "password":"password123"
+}
+
+
+######## post 작성
+POST http://localhost:8080/api/post
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMDkzMzI1fQ.b-h-uaYLLTMus2eQsVDKEtim5dgkX9yWBIpl9rtLgbk
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM2OTYzMjV9.gqhMsrLI9Qe3SJY6wxBIUnJkPflXg-YcN4ASk2LtNJY
+Content-Type: application/json
+
+{
+  "title": "책제목",
+  "username": "유저네임",
+  "content": "책 상세 내용",
+  "imageUrl": "url",
+  "bookpage": 124,
+  "score": 2,
+  "startTime": "2022-10-2",
+  "endTime": "2022-11-2"
+}
