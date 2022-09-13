@@ -10,6 +10,7 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 
 
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,13 +18,14 @@ import javax.persistence.*;
 @Entity
 @Where(clause = "deleted_at IS NULL")
 @SQLDelete(sql = "UPDATE post SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?")
-public class Post {
+public class Post extends TimeStamped {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
-    private String username;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "writer_id")
+    private Member username;
 
     @Column(nullable = false)
     private String title;
@@ -41,9 +43,24 @@ public class Post {
     private String endTime = "";
 
 
-    public Post(String title, String username, int bookPage) {
+    public Post(String title, Member username, int bookPage) {
         this.title = title;
         this.username = username;
         this.bookPage = bookPage;
+    };
+
+    public Post(String title, Member username, int bookPage, int score, String startTime, String endTime) {
+        this.title = title;
+        this.username = username;
+        this.bookPage = bookPage;
+        this.score = score;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    };
+
+    public Post(int score, String startTime, String endTime) {
+        this.score = score;
+        this.startTime = startTime;
+        this.endTime = endTime;
     };
 }
