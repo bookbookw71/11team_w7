@@ -33,7 +33,12 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
 
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    // @NotBlank 등을 사용한 유효성 검사
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
 
+    // Swagger 적용
+    implementation "io.springfox:springfox-swagger2:2.9.2"
+    implementation "io.springfox:springfox-swagger-ui:2.9.2"
 
 }
 

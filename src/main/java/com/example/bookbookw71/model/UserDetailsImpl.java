@@ -1,23 +1,28 @@
-package com.example.bookbookw71.service;
+package com.example.bookbookw71.model;
 
-import com.example.bookbookw71.model.Member;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 
-//UserDetails는 미리 제공된 인터페이스
-public class MemberDetailsImpl implements UserDetails {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserDetailsImpl implements UserDetails {
 
-    private final Member member;
+    private Member member;
 
-    public MemberDetailsImpl(Member member) {
-        this.member = member;
-    }
-
-    public Member getMember() {
-        return member;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(Authority.ROLE_MEMBER.toString());
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(authority);
+        return authorities;
     }
 
     @Override
@@ -49,10 +54,4 @@ public class MemberDetailsImpl implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.emptyList();
-    }
 }
-
