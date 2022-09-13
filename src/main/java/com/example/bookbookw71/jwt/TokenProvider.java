@@ -1,9 +1,15 @@
 package com.example.bookbookw71.jwt;
 
 import com.example.bookbookw71.controller.request.TokenDto;
+import com.example.bookbookw71.controller.response.ResponseDto;
+import com.example.bookbookw71.model.Member;
 import com.example.bookbookw71.model.RefreshToken;
 import com.example.bookbookw71.model.UserDetailsImpl;
+import com.example.bookbookw71.repository.RefreshTokenRepository;
+import com.example.bookbookw71.shared.Authority;
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -112,4 +118,6 @@ public class TokenProvider {
         refreshTokenRepository.delete(refreshToken);
         return ResponseDto.success("LOGOUT SUCCESS");
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.bookbookw71.model;
 
+import com.example.bookbookw71.shared.Authority;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -55,3 +56,4 @@ public class UserDetailsImpl implements UserDetails {
         return true;
     }
 }
+

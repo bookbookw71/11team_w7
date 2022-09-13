@@ -3,7 +3,8 @@ package com.example.bookbookw71.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.core.context.SecurityContext;
+
+import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -39,7 +40,7 @@ public class SwaggerConfig {
     private ApiKey apiKey(){return new ApiKey("Authorization","Authorization","header");}
 
     private SecurityContext securityContext() {
-        return (SecurityContext) springfox
+        return springfox
                 .documentation
                 .spi.service
                 .contexts

@@ -1,6 +1,7 @@
 package com.example.bookbookw71.service;
 
 import com.example.bookbookw71.model.Member;
+import com.example.bookbookw71.model.UserDetailsImpl;
 import com.example.bookbookw71.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,6 +23,6 @@ public class MemberDetailsServiceImpl implements UserDetailsService {
         Member member = memberRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Can't find " + username));
 
-        return new MemberDetailsImpl(member);
+        return new UserDetailsImpl(member);
     }
 }

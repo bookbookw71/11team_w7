@@ -1,5 +1,6 @@
 package com.example.bookbookw71.jwt;
 
+import com.example.bookbookw71.controller.response.ResponseDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

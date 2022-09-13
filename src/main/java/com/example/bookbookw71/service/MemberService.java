@@ -32,7 +32,6 @@ public class MemberService {
     public static String BEARER_PREFIX = "Bearer ";
     private final TokenProvider tokenProvider;
     private final MemberRepository memberRepository;
-    private final com.week06.team01.service.PostService postService;
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
@@ -122,16 +121,16 @@ public class MemberService {
         response.addHeader("Access-Token-Expire-Time", tokenDto.getAccessTokenExpiresIn().toString());
     }
 
-    public ResponseEntity<Message> info(HttpServletRequest request) {
-        Member member = postService.validateMember(request);
-        Message message = new Message(MemberResponseDto.builder()
-                .id(member.getId())
-                .nickname(member.getNickname())
-                .username(member.getUsername()).build());
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(new MediaType("application","json", Charset.forName("UTF-8")));
-        return new ResponseEntity<>(message,headers,HttpStatus.OK);
-    }
+//    public ResponseEntity<Message> info(HttpServletRequest request) {
+//        Member member = postService.validateMember(request);
+//        Message message = new Message(MemberResponseDto.builder()
+//                .id(member.getId())
+//                //.nickname(member.getNickname())
+//                .username(member.getUsername()).build());
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(new MediaType("application","json", Charset.forName("UTF-8")));
+//        return new ResponseEntity<>(message,headers,HttpStatus.OK);
+//    }
 
     private String resolveToken(HttpServletRequest request) {
         String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
@@ -181,4 +180,4 @@ public class MemberService {
     }
 
 }
-}
+
