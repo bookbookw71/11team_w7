@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,12 +20,12 @@ public class PostService {
 
 
     @Transactional
-    public ResponseDto<?> create(PostRequestDto requestDto) {
-        System.out.println("postservice에서 시작 되는지");
+    public ResponseDto<?> createPost(PostRequestDto requestDto) {
+        //fail인 경우 고려 X
 
         Post post = new Post(requestDto.getTitle(), requestDto.getUsername(), requestDto.getContent(), requestDto.getImageUrl(), requestDto.getBookPage(), requestDto.getScore(), requestDto.getStartTime(), requestDto.getEndTime());
         postRepository.save(post);
-        System.out.println("postservice에서 return 직전");
+
         return ResponseDto.success(
                 PostResponse.builder()
                         .id(post.getId())
@@ -40,6 +41,29 @@ public class PostService {
                         .modifiedAt(post.getModifiedAt())
                         .build()
         );
+    }
+
+    public ResponseDto<?> getAllPost(){
+        List<Post> postList = postRepository.findAll();
+        List<PostResponse> responseDtos = new ArrayList<>();
+
+        for(Post post:postList){
+            responseDtos.add(PostResponse.builder()
+                    .id(post.getId())
+                    .title(post.getTitle())
+                    .content(post.getContent())
+                    .username(post.getUsername())
+                    .imageUrl(post.getImageUrl())
+                    .bookPage(post.getBookPage())
+                    .score(post.getScore())
+                    .startTime(post.getStartTime())
+                    .endTime(post.getEndTime())
+                    .createdAt(post.getCreatedAt())
+                    .modifiedAt(post.getModifiedAt())
+                    .build()
+            );
+        }
+        return ResponseDto.success(responseDtos);
     }
 
 

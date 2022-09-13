@@ -20,17 +20,23 @@ Content-Type: application/json
 
 ######## post 작성
 POST http://localhost:8080/api/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMDkzMzI1fQ.b-h-uaYLLTMus2eQsVDKEtim5dgkX9yWBIpl9rtLgbk
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM2OTYzMjV9.gqhMsrLI9Qe3SJY6wxBIUnJkPflXg-YcN4ASk2LtNJY
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTAxOTU3fQ.j3TUS6GSnqtQLMgduNtXMtpVayZpknJ4GMg3APoc9js
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MDQ5NTd9.EFGvzFLWc-ayH4uYyUP4mFeck-TcuVD96xGse0UayYM
 Content-Type: application/json
 
 {
-  "title": "책제목",
-  "username": "유저네임",
-  "content": "책 상세 내용",
+  "title": "책제목2",
+  "username": "유저네임2",
+  "content": "책 상세 내용2",
   "imageUrl": "url",
-  "bookpage": 124,
+  "bookPage": 124,
   "score": 2,
   "startTime": "2022-10-2",
   "endTime": "2022-11-2"
 }
+
+
+######## 모든 포스트 조회
+GET http://localhost:8080/api/post
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTAxOTU3fQ.j3TUS6GSnqtQLMgduNtXMtpVayZpknJ4GMg3APoc9js
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MDQ5NTd9.EFGvzFLWc-ayH4uYyUP4mFeck-TcuVD96xGse0UayYM

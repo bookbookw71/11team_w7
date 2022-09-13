@@ -7,10 +7,7 @@ import com.example.bookbookw71.repository.MemberRepository;
 import com.example.bookbookw71.search.SearchService;
 import com.example.bookbookw71.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -25,8 +22,16 @@ public class PostController {
     @RequestMapping(value = "/api/post", method = RequestMethod.POST)
     public ResponseDto<?> postCreate(@RequestBody PostRequestDto requestDto) {
         System.out.println("포스트 컨트롤러");
-        return postService.create(requestDto);
+        return postService.createPost(requestDto);
     }
+
+    @RequestMapping(value = "/api/post", method = RequestMethod.GET)
+    public ResponseDto<?> getAllPost() {
+        return postService.getAllPost();
+    }
+
+
+
 
 }
 
