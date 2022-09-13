@@ -57,11 +57,8 @@ public class MemberService {
 
     @Transactional
     public ResponseEntity<Message> login(LoginRequestDto requestDto, HttpServletResponse response) {
-        System.out.println("000");
         Member member = isPresentMember(requestDto.getUsername());
-        System.out.println("111");
         HttpHeaders headers = new HttpHeaders();
-        System.out.println("2222");
 
         if (null == member) {
             Message message = new Message();
@@ -76,9 +73,7 @@ public class MemberService {
             return new ResponseEntity<>(message,headers,HttpStatus.BAD_REQUEST);
         }
 
-        System.out.println("3333");
         TokenDto tokenDto = tokenProvider.generateTokenDto(member);
-        System.out.println("44444");
         tokenToHeaders(tokenDto, response);
         Message message = new Message(MemberResponseDto.builder()
                 .id(member.getId())

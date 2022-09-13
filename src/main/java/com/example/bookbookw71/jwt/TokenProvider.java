@@ -46,9 +46,7 @@ public class TokenProvider {
     public TokenDto generateTokenDto(Member member) {
         long now = (new Date().getTime());
 
-        System.out.println("aaaa");
         Date accessTokenExpiresIn = new Date(now + ACCESS_TOKEN_EXPIRE_TIME);
-        System.out.println("bbbb");
 
 
         String accessToken = Jwts.builder()
@@ -57,13 +55,11 @@ public class TokenProvider {
                 .setExpiration(accessTokenExpiresIn)
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
-        System.out.println("cccc");
 
         String refreshToken = Jwts.builder()
                 .setExpiration(new Date(now + REFRESH_TOKEN_EXPRIRE_TIME))
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
-        System.out.println("ddd");
 
         RefreshToken refreshTokenObject = RefreshToken.builder()
                 .id(member.getId())
@@ -71,9 +67,7 @@ public class TokenProvider {
                 .vvalue(refreshToken)
                 .build();
 
-        System.out.println("eeee");
         refreshTokenRepository.save(refreshTokenObject);
-        System.out.println("ffff");
 
         return TokenDto.builder()
                 .grantType(BEARER_PREFIX)
