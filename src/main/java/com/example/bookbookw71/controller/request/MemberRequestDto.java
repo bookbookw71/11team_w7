@@ -13,8 +13,7 @@ import javax.validation.constraints.Size;
 public class MemberRequestDto {
 
     @NotBlank
-    @Size(min = 4, max = 12)
-    private String nickname;
+    private String email;
 
     @NotBlank
     @Size(min = 4, max = 12)
@@ -24,7 +23,7 @@ public class MemberRequestDto {
     @Size(min = 4, max = 32)
     private String password;
 
-    @NotBlank
-    private String pwdCheck;
+//    @NotBlank
+//    private String pwdCheck;
 
 }

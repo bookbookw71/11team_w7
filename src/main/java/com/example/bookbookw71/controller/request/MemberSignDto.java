@@ -13,6 +13,13 @@ import javax.validation.constraints.Size;
 public class MemberSignDto {
 
     @NotBlank
+    private String email;
+    @NotBlank
     @Size(min = 4, max = 12)
     private String username;
+
+    @NotBlank
+    private String password;
+
+
 }

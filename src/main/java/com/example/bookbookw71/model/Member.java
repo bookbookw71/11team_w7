@@ -1,16 +1,17 @@
 package com.example.bookbookw71.model;
 
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Builder
 public class Member {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,6 +34,9 @@ public class Member {
     @Column(unique = true)
     private Long kakaoId;
 
+    public boolean validatePassword(PasswordEncoder passwordEncoder, String password) {
+        return passwordEncoder.matches(password, this.password);
+    }
     public Member(String username, String password, String email, MemberRoleEnum role) {
         this.username = username;
         this.password = password;

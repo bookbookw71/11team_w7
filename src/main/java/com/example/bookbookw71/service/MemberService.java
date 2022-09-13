@@ -1,8 +1,11 @@
+package com.example.bookbookw71.service;
+
 import com.example.bookbookw71.controller.request.LoginRequestDto;
 import com.example.bookbookw71.controller.request.MemberRequestDto;
 import com.example.bookbookw71.controller.request.MemberSignDto;
 import com.example.bookbookw71.controller.request.TokenDto;
 import com.example.bookbookw71.controller.response.Message;
+import com.example.bookbookw71.dto.MemberResponseDto;
 import com.example.bookbookw71.jwt.TokenProvider;
 import com.example.bookbookw71.model.Member;
 import com.example.bookbookw71.model.StatusEnum;
@@ -36,15 +39,15 @@ public class MemberService {
     public ResponseEntity<Message> createMember(MemberRequestDto requestDto) {
         HttpHeaders headers = new HttpHeaders();
 
-        if (!requestDto.getPassword().equals(requestDto.getPwdCheck())) {
-            Message message = new Message();
-            message.setStatus(StatusEnum.PASSWORDS_NOT_MATCHED);
-            message.setMessage("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
-            return new ResponseEntity<>(message,headers, HttpStatus.BAD_REQUEST);
-        }
+//        if (!requestDto.getPassword().equals(requestDto.getPwdCheck())) {
+//            Message message = new Message();
+//            message.setStatus(StatusEnum.PASSWORDS_NOT_MATCHED);
+//            message.setMessage("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+//            return new ResponseEntity<>(message,headers, HttpStatus.BAD_REQUEST);
+//        }
         Member member = Member.builder()
                 .username(requestDto.getUsername())
-                .nickname(requestDto.getNickname())
+                .email(requestDto.getEmail())
                 .password(passwordEncoder.encode(requestDto.getPassword()))
                 .build();
         memberRepository.save(member);
@@ -74,7 +77,6 @@ public class MemberService {
         Message message = new Message(MemberResponseDto.builder()
                 .id(member.getId())
                 .username(member.getUsername())
-                .nickname(member.getNickname())
                 .build()
         );
         return new ResponseEntity<>(message,headers,HttpStatus.OK);
@@ -100,8 +102,8 @@ public class MemberService {
 
         Message message = new Message(MemberResponseDto.builder()
                 .id(member.getId())
-                .nickname(member.getNickname())
-                .username(member.getUsername()).build());
+                .username(member.getUsername())
+                .build());
         message.setMessage("Success");
         message.setStatus(StatusEnum.OK);
         tokenProvider.deleteRefreshToken(member);
@@ -158,4 +160,25 @@ public class MemberService {
             return new ResponseEntity<>(message,headers,HttpStatus.OK);
         }
     }
+
+    public ResponseEntity<Message> emailCheck(MemberSignDto memberSignDto) {
+        Optional<Member> member = memberRepository.findByEmail(memberSignDto.getEmail());
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(new MediaType("application","json", Charset.forName("UTF-8")));
+
+        if(member.isPresent()){
+            Message message = new Message();
+            message.setStatus(StatusEnum.ID_DUPLICATION);
+            message.setMessage("중복된 이메일입니다.");
+            return new ResponseEntity<>(message,headers,HttpStatus.BAD_REQUEST);
+        }
+        else{
+            Message message = new Message(memberSignDto);
+            message.setStatus(StatusEnum.OK);
+            message.setMessage("Success");
+            return new ResponseEntity<>(message,headers,HttpStatus.OK);
+        }
+    }
+
+}
 }
