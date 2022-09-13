@@ -35,7 +35,7 @@ public class PostService {
                         .username(post.getUsername())
                         .imageUrl(post.getImageUrl())
                         .bookPage(post.getBookPage())
-                        .score(post.getScore())
+                        .star(post.getStar())
                         .startTime(post.getStartTime())
                         .endTime(post.getEndTime())
                         .createdAt(post.getCreatedAt())
@@ -56,7 +56,7 @@ public class PostService {
                     .username(post.getUsername())
                     .imageUrl(post.getImageUrl())
                     .bookPage(post.getBookPage())
-                    .score(post.getScore())
+                    .star(post.getStar())
                     .startTime(post.getStartTime())
                     .endTime(post.getEndTime())
                     .createdAt(post.getCreatedAt())
@@ -79,7 +79,7 @@ public class PostService {
                         .username(post.getUsername())
                         .imageUrl(post.getImageUrl())
                         .bookPage(post.getBookPage())
-                        .score(post.getScore())
+                        .star(post.getStar())
                         .startTime(post.getStartTime())
                         .endTime(post.getEndTime())
                         .createdAt(post.getCreatedAt())
@@ -101,9 +101,19 @@ public class PostService {
 
 
     //TODO: post 수정기능 구현 해야 함.
-//    public ResponseDto<?> updatePost(Long postId, PostRequestDto requestDto){
-//
-//    }
+    public ResponseDto<?> updatePost(Long postId, PostRequestDto requestDto){
 
+        Post post = isPresentPost(postId);
+        post.update(requestDto);
+
+        return ResponseDto.success(post);
+    }
+
+
+    @org.springframework.transaction.annotation.Transactional(readOnly = true)
+    public Post isPresentPost(Long id) {
+        Optional<Post> optionalPost = postRepository.findById(id);
+        return optionalPost.orElse(null);
+    }
 
 }

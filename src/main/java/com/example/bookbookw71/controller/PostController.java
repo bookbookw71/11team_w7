@@ -44,6 +44,11 @@ public class PostController {
         postService.deletePost(postId);
     }
 
+    @RequestMapping(value = "/api/post/{id}", method = RequestMethod.PUT)
+    public ResponseDto<?> updatePost(@PathVariable Long id, @RequestBody PostRequestDto postRequestDto) {
+        return postService.updatePost(id, postRequestDto);
+    }
+
 }
 
 

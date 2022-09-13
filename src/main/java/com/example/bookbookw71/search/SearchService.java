@@ -1,17 +1,13 @@
 package com.example.bookbookw71.search;
 
-
 import com.example.bookbookw71.controller.response.ResponseDto;
-import com.example.bookbookw71.model.Book;
 import com.example.bookbookw71.service.BookResponse;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.helpers.ParserAdapter;
-
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-
 import java.net.URLEncoder;
 import java.util.*;
 
@@ -56,6 +52,7 @@ public class SearchService {
         List<BookResponse> responseDtos = new ArrayList<>();
 
         SearchService api = new SearchService();
+        //이 부분이 안 됌 .. . ....
         api.parseXml(url);
 
         System.out.println("아이템 url :"+ url);
@@ -66,12 +63,14 @@ public class SearchService {
 
             System.out.println("아이템 title : "+ item.title);
         }
+
         return ResponseDto.success(responseDtos);
     }
 
 
 
-//    public String xmlToJSON(String xml) {
+
+//    public String xmlToJSON(String jsonUrl) {
 //        try{
 //
 //            JSONObject json = XML.toJSONObject(xml);
@@ -87,7 +86,10 @@ public class SearchService {
         SAXParserFactory spf = SAXParserFactory.newInstance();
         SAXParser sp = spf.newSAXParser();
         ParserAdapter pa = new ParserAdapter(sp.getParser());
-        pa.setContentHandler((ContentHandler) this);
+
+        //여기 밑에가 문제!
+        //pa.setContentHandler((ContentHandler) this);
+
         pa.parse(xmlUrl);
     }
 

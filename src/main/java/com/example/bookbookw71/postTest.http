@@ -20,8 +20,8 @@ Content-Type: application/json
 
 ######## 검색
 POST http://localhost:8080/api/search
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTA2MzcwfQ.YQGcQ_K53VJQdimhOpIRVNBgFm6YYHopQraytDmsKS8
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MDkzNzB9.Bt8iVN7aoQIx5wGjas6QHnW_fjcw2MDrbsOb1R5-grA
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE0MDI1fQ.cy0LtQNRrk_tqnf-XZBWPAmhkmaK9fV_BBk693EwOIo
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MTcwMjV9.YpFqK1e2SPEd9e5ZnNYt4L6ZMG0nX2lhCho-tVFVcAY
 Content-Type: application/json
 
 {
@@ -31,17 +31,17 @@ Content-Type: application/json
 
 ######## post 작성
 POST http://localhost:8080/api/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTAzMjIwfQ.huhAVxE53WMqeE19iHIkAKirW7LHm8PBcdxP6fNS_BY
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MDYyMjB9.BlgSRvBZ2OVJFaxMXrAOpg_wRn0O751PrxLLGllk0lI
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE0MDI1fQ.cy0LtQNRrk_tqnf-XZBWPAmhkmaK9fV_BBk693EwOIo
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MTcwMjV9.YpFqK1e2SPEd9e5ZnNYt4L6ZMG0nX2lhCho-tVFVcAY
 Content-Type: application/json
 
 {
-  "title": "책제목1",
-  "username": "유저네임1",
-  "content": "책 상세 내용1",
+  "title": "책제목2",
+  "username": "유저네임2",
+  "content": "책 상세 내용2",
   "imageUrl": "url",
   "bookPage": 124,
-  "score": 2,
+  "star": 2,
   "startTime": "2022-10-2",
   "endTime": "2022-11-2"
 }
@@ -49,21 +49,32 @@ Content-Type: application/json
 
 ######## 모든 포스트 조회
 GET http://localhost:8080/api/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTAxOTU3fQ.j3TUS6GSnqtQLMgduNtXMtpVayZpknJ4GMg3APoc9js
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MDQ5NTd9.EFGvzFLWc-ayH4uYyUP4mFeck-TcuVD96xGse0UayYM
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE0MDI1fQ.cy0LtQNRrk_tqnf-XZBWPAmhkmaK9fV_BBk693EwOIo
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MTcwMjV9.YpFqK1e2SPEd9e5ZnNYt4L6ZMG0nX2lhCho-tVFVcAY
 
 
 ######## 상세 포스트 조회
 GET http://localhost:8080/api/post/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTAxOTU3fQ.j3TUS6GSnqtQLMgduNtXMtpVayZpknJ4GMg3APoc9js
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MDQ5NTd9.EFGvzFLWc-ayH4uYyUP4mFeck-TcuVD96xGse0UayYM
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE0MDI1fQ.cy0LtQNRrk_tqnf-XZBWPAmhkmaK9fV_BBk693EwOIo
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MTcwMjV9.YpFqK1e2SPEd9e5ZnNYt4L6ZMG0nX2lhCho-tVFVcAY
 
 
 ######## 포스트 삭제
 DELETE http://localhost:8080/api/post/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTAxOTU3fQ.j3TUS6GSnqtQLMgduNtXMtpVayZpknJ4GMg3APoc9js
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MDQ5NTd9.EFGvzFLWc-ayH4uYyUP4mFeck-TcuVD96xGse0UayYM
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE0MDI1fQ.cy0LtQNRrk_tqnf-XZBWPAmhkmaK9fV_BBk693EwOIo
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MTcwMjV9.YpFqK1e2SPEd9e5ZnNYt4L6ZMG0nX2lhCho-tVFVcAY
 
 
+######## post 수정
+PUT http://localhost:8080/api/post/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE0MDI1fQ.cy0LtQNRrk_tqnf-XZBWPAmhkmaK9fV_BBk693EwOIo
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MTcwMjV9.YpFqK1e2SPEd9e5ZnNYt4L6ZMG0nX2lhCho-tVFVcAY
+Content-Type: application/json
 
+{
+  "title": "책제목3 수정",
+  "star": 3,
+  "startTime": "2022-10-3",
+  "endTime": "2022-11-4"
+}
 

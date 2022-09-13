@@ -25,7 +25,7 @@ public class PostResponse {
 
     private int bookPage;
 
-    private int score;
+    private int star;
 
     private String startTime;
 

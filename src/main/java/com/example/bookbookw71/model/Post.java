@@ -1,5 +1,6 @@
 package com.example.bookbookw71.model;
 
+import com.example.bookbookw71.dto.PostRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,7 +38,7 @@ public class Post extends Timestamped {
     private int bookPage;
 
     @Column(nullable = false)
-    private int score;
+    private int star;
 
     @Column(nullable = false)
     private String startTime;
@@ -60,15 +61,21 @@ public class Post extends Timestamped {
         this.username = username;
         this.imageUrl = imageUrl;
         this.bookPage = bookPage;
-        this.score = score;
+        this.star = star;
         this.startTime = startTime;
         this.endTime = endTime;
     };
 
-    public Post(int score, String startTime, String endTime) {
-        this.score = score;
+    public Post(int star, String startTime, String endTime) {
+        this.star = star;
         this.startTime = startTime;
         this.endTime = endTime;
     };
 
+    public void update(PostRequestDto postRequestDto) {
+        this.title = postRequestDto.getTitle();
+        this.star = star;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
 }
