@@ -8,6 +8,7 @@ Content-Type: application/json
   "password":"password123"
 }
 
+
 ######## 로그인1
 POST http://localhost:8080/api/member/login
 Content-Type: application/json
@@ -15,6 +16,16 @@ Content-Type: application/json
 {
   "username":"dnsielf",
   "password":"password123"
+}
+
+######## 검색
+POST http://localhost:8080/api/search
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTA2MzcwfQ.YQGcQ_K53VJQdimhOpIRVNBgFm6YYHopQraytDmsKS8
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MDkzNzB9.Bt8iVN7aoQIx5wGjas6QHnW_fjcw2MDrbsOb1R5-grA
+Content-Type: application/json
+
+{
+  "searchTitle": "경제"
 }
 
 
@@ -46,6 +57,7 @@ Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MDQ5NTd9.EFGvzFLWc-ayH4uYyUP
 GET http://localhost:8080/api/post/1
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTAxOTU3fQ.j3TUS6GSnqtQLMgduNtXMtpVayZpknJ4GMg3APoc9js
 Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MDQ5NTd9.EFGvzFLWc-ayH4uYyUP4mFeck-TcuVD96xGse0UayYM
+
 
 ######## 포스트 삭제
 DELETE http://localhost:8080/api/post/1

@@ -34,6 +34,8 @@ public class Book {
     @Column(nullable = false)
     private int bookPage;
 
+    private String author;
+
     public Book(String title, String content, String imageUrl, int bookPage) {
         this.title = title;
         this.content = content;

@@ -1,7 +1,9 @@
 package com.example.bookbookw71.search;
 
 
+import com.example.bookbookw71.controller.response.ResponseDto;
 import com.example.bookbookw71.model.Book;
+import com.example.bookbookw71.service.BookResponse;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 import org.xml.sax.ContentHandler;
@@ -49,17 +51,22 @@ public class SearchService {
         return BASE_SEARCH_URL + sb.toString();
     }
 
-    public static void itemSave(String search) throws Exception {
+    public static ResponseDto<?> itemSave(String search) throws Exception {
         String url = getUrl(search); //args를 이 부분을 request로 받도록 수정
+        List<BookResponse> responseDtos = new ArrayList<>();
 
         SearchService api = new SearchService();
         api.parseXml(url);
 
+        System.out.println("아이템 url :"+ url);
 
         for(Item item : api.Items){
-            Book book = new Book(item.title, item.description, item.imageUrl, item.pricesales);
-        }
+            BookResponse bookResponse = new BookResponse(item.title, item.description, item.imageUrl, item.pricesales, item.author);
+            responseDtos.add(bookResponse);
 
+            System.out.println("아이템 title : "+ item.title);
+        }
+        return ResponseDto.success(responseDtos);
     }
 
 
