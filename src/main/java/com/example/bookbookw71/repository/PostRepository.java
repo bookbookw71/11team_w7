@@ -9,9 +9,9 @@ import java.util.Optional;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-    Optional<Post> get(Long id);
-
-    List<Post> getAll();
-
+//    Optional<Post> get(Long id);
+//
+//    List<Post> getAll();
+//
     List<Post> findAll();
 }
