@@ -1,5 +1,6 @@
 package com.example.bookbookw71.service;
 
+import com.example.bookbookw71.model.Book;
 import lombok.SneakyThrows;
 
 import java.net.URLEncoder;
@@ -12,6 +13,11 @@ import org.xml.sax.helpers.ParserAdapter;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+<<<<<<< Updated upstream:src/main/java/com/example/bookbookw71/service/SearchService.java
+=======
+import java.net.URLEncoder;
+import java.util.*;
+>>>>>>> Stashed changes:src/main/java/com/example/bookbookw71/Search/SearchService.java
 
 class Item{
     public String title = "";
@@ -64,10 +70,16 @@ public class SearchService {
         SearchService api = new SearchService();
         api.parseXml(url);
 
+<<<<<<< Updated upstream:src/main/java/com/example/bookbookw71/service/SearchService.java
         for(Item item : api.Items){
             System.out.println(item.title + " : " + item.link);
             System.out.println("상품설명 : "+item.description);
             System.out.println();
+=======
+
+        for(Item item : api.Items){
+            Book book = new Book(item.title, item.description, item.imageUrl, item.startIndex);
+>>>>>>> Stashed changes:src/main/java/com/example/bookbookw71/Search/SearchService.java
         }
 
     }
