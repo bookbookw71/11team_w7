@@ -1,4 +1,4 @@
-package com.example.bookbookw71.API;
+package com.example.bookbookw71.service;
 
 import lombok.SneakyThrows;
 
@@ -13,17 +13,24 @@ import org.xml.sax.helpers.ParserAdapter;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-
+class Item{
+    public String title = "";
+    public String author = "";
+    public String description = "";
+    public String imageUrl = "";
+    public String link = "";
+}
 
 public class SearchService {
     public List<Item> Items;
     private Item currentItem;
-    private boolean inItemElement = false;
+//    private boolean inItemElement = false;
     private String tempValue;
+
     private static final String BASE_SEARCH_URL = "http://www.aladdin.co.kr/ttb/api/ItemSearch.aspx?";
     private static final String BASE_ITEM_URL = "http://www.aladin.co.kr/ttb/api/ItemList.aspx?";
 
-    SearchService( ){
+    public void SearchService( ){
         Items = new ArrayList<Item>();
     }
 
