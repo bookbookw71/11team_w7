@@ -37,6 +37,7 @@ public class Member {
     public boolean validatePassword(PasswordEncoder passwordEncoder, String password) {
         return passwordEncoder.matches(password, this.password);
     }
+
     public Member(String username, String password, String email, MemberRoleEnum role) {
         this.username = username;
         this.password = password;
