@@ -8,6 +8,7 @@ import com.example.bookbookw71.controller.response.Message;
 import com.example.bookbookw71.dto.MemberResponseDto;
 import com.example.bookbookw71.jwt.TokenProvider;
 import com.example.bookbookw71.model.Member;
+import com.example.bookbookw71.model.MemberRoleEnum;
 import com.example.bookbookw71.model.StatusEnum;
 import com.example.bookbookw71.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +38,6 @@ public class MemberService {
     @Transactional
     public ResponseEntity<Message> createMember(MemberRequestDto requestDto) {
         HttpHeaders headers = new HttpHeaders();
-
 //        if (!requestDto.getPassword().equals(requestDto.getPwdCheck())) {
 //            Message message = new Message();
 //            message.setStatus(StatusEnum.PASSWORDS_NOT_MATCHED);
@@ -48,6 +48,7 @@ public class MemberService {
                 .username(requestDto.getUsername())
                 .email(requestDto.getEmail())
                 .password(passwordEncoder.encode(requestDto.getPassword()))
+                .role(MemberRoleEnum.MEMBER)
                 .build();
         memberRepository.save(member);
         Message message = new Message(member);
@@ -71,6 +72,7 @@ public class MemberService {
             message.setMessage("사용자를 찾을 수 없습니다.");
             return new ResponseEntity<>(message,headers,HttpStatus.BAD_REQUEST);
         }
+
         TokenDto tokenDto = tokenProvider.generateTokenDto(member);
         tokenToHeaders(tokenDto, response);
         Message message = new Message(MemberResponseDto.builder()

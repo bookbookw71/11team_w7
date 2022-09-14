@@ -1,6 +1,7 @@
 package com.example.bookbookw71.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -21,6 +22,7 @@ public class Member {
     @Column(nullable = false, unique = true)
     private String username;
 
+    @JsonIgnore //리스폰스때 json형식 x
     @Column(nullable = false)
     private String password;
 
@@ -51,4 +53,5 @@ public class Member {
         this.role = role;
         this.kakaoId=kakaoId;
     }
+
 }

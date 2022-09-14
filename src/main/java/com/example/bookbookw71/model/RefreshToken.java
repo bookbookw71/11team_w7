@@ -23,6 +23,6 @@ public class RefreshToken extends Timestamped {
     private Member member;
 
     @Column(nullable = false)
-    private String value;
+    private String vvalue;
 
 }

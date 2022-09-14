@@ -48,6 +48,7 @@ public class TokenProvider {
 
         Date accessTokenExpiresIn = new Date(now + ACCESS_TOKEN_EXPIRE_TIME);
 
+
         String accessToken = Jwts.builder()
                 .setSubject(member.getUsername())
                 .claim(AUTHORITIES_KEY, Authority.ROLE_MEMBER.toString())
@@ -63,7 +64,7 @@ public class TokenProvider {
         RefreshToken refreshTokenObject = RefreshToken.builder()
                 .id(member.getId())
                 .member(member)
-                .value(refreshToken)
+                .vvalue(refreshToken)
                 .build();
 
         refreshTokenRepository.save(refreshTokenObject);

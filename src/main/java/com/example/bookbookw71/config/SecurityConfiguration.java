@@ -75,7 +75,7 @@ public class SecurityConfiguration extends WebMvcConfigurationSupport {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/api/member/**").permitAll()
-                .antMatchers("/api/main/**","/api/member/**").permitAll()
+                .antMatchers("/api/main/**").permitAll()
                 .antMatchers(PERMIT_URL_ARRAY).permitAll()
                 .antMatchers("/css/**","/images/**","/js/**").permitAll()
                 .anyRequest().authenticated()

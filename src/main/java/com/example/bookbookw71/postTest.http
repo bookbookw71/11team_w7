@@ -1,0 +1,107 @@
+######## 회원가입1
+POST http://localhost:8080/api/member/signup
+Content-Type: application/json
+
+{
+  "username":"dnsielf",
+  "email":"test2@naver.com",
+  "password":"password123"
+}
+
+######## 회원가입2
+POST http://localhost:8080/api/member/signup
+Content-Type: application/json
+
+{
+  "username":"arywrew",
+  "email":"test3@naver.com",
+  "password":"password123"
+}
+
+
+######## 로그인1
+POST http://localhost:8080/api/member/login
+Content-Type: application/json
+
+{
+  "username":"arywrew",
+  "password":"password123"
+}
+
+######## 검색
+POST http://localhost:8080/api/search
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTM1MDU0fQ.IvZxqflpM7qM4wGmcH5XSlgVxFpm-DdiNZDausUQl5E
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MzgwNTR9.DXPXf36xNejrMrjaKSiAFPl46HOANdlEa80NVjlkDnw
+Content-Type: application/json
+
+{
+  "searchTitle": "경제"
+}
+
+
+######## post 작성
+POST http://localhost:8080/api/auth/post
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTM1MDU0fQ.IvZxqflpM7qM4wGmcH5XSlgVxFpm-DdiNZDausUQl5E
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MzgwNTR9.DXPXf36xNejrMrjaKSiAFPl46HOANdlEa80NVjlkDnw
+Content-Type: application/json
+
+{
+  "title": "책제목3",
+  "content": "책 상세 내용3",
+  "imageUrl": "url",
+  "bookPage": 124,
+  "star": 2,
+  "readStart": "2022-10-2",
+  "readEnd": "2022-11-2"
+}
+
+
+######## 모든 포스트 조회
+GET http://localhost:8080/api/auth/post
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTM1MDU0fQ.IvZxqflpM7qM4wGmcH5XSlgVxFpm-DdiNZDausUQl5E
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MzgwNTR9.DXPXf36xNejrMrjaKSiAFPl46HOANdlEa80NVjlkDnw
+
+
+######## 상세 포스트 조회
+GET http://localhost:8080/api/auth/post/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTM1MDU0fQ.IvZxqflpM7qM4wGmcH5XSlgVxFpm-DdiNZDausUQl5E
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MzgwNTR9.DXPXf36xNejrMrjaKSiAFPl46HOANdlEa80NVjlkDnw
+
+
+######## 포스트 삭제
+DELETE http://localhost:8080/api/auth/post/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcnl3cmV3IiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTM1Nzk3fQ.GtD-5kY0Q9EApEqVzqv2U5FaclmhTyxCGeg8jogJcxs
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3Mzg3OTd9.uOuKAzHq3MVqndDjLn-KcJf0hcM-onIsOCUdEtL1JR8
+
+
+######## post 수정
+PUT http://localhost:8080/api/auth/post/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTM1MDU0fQ.IvZxqflpM7qM4wGmcH5XSlgVxFpm-DdiNZDausUQl5E
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MzgwNTR9.DXPXf36xNejrMrjaKSiAFPl46HOANdlEa80NVjlkDnw
+Content-Type: application/json
+
+{
+  "title": "책제목1 수정",
+  "content": "책 상세 내용1 수정",
+  "star": 3,
+  "readStart": "2022-10-5",
+  "readEnd": "2022-11-9"
+}
+
+
+###post작성 error response 확인
+POST http://localhost:8080/api/auth/post
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTM1MDU0fQ.IvZxqflpM7qM4wGmcH5XSlgVxFpm-DdiNZDausUQl5E
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MzgwNTR9.DXPXf36xNejrMrjaKSiAFPl46HOANdlEa80NVjlkDnw
+Content-Type: application/json
+
+{
+//  "title": "책제목3",
+  "content": "책 상세 내용3",
+  "imageUrl": "url",
+  "bookPage": 124,
+  "star": 2,
+  "readStart": "2022-10-2",
+  "readEnd": "2022-11-2"
+}
+

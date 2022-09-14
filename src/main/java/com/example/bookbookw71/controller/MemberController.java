@@ -42,9 +42,7 @@ public class MemberController {
 
     //로그인
     @RequestMapping(value = "/api/member/login", method = RequestMethod.POST)
-    public ResponseEntity<Message> login(@RequestBody @Valid LoginRequestDto requestDto,
-                                         HttpServletResponse response
-    ) {
+    public ResponseEntity<Message> login(@RequestBody @Valid LoginRequestDto requestDto, HttpServletResponse response) {
         return memberService.login(requestDto, response);
     }
 
