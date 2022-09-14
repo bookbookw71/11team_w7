@@ -105,3 +105,4 @@ public class SecurityConfiguration extends WebMvcConfigurationSupport {
                 .allowCredentials(true);
     }
 }
+
