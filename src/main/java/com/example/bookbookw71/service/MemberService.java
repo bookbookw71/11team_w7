@@ -60,18 +60,21 @@ public class MemberService {
         Member member = isPresentMember(requestDto.getEmail());
         HttpHeaders headers = new HttpHeaders();
 
+        System.out.println("0000");
         if (null == member) {
             Message message = new Message();
             message.setStatus(StatusEnum.MEMBER_NOT_FOUND);
             message.setMessage("사용자를 찾을 수 없습니다.");
             return new ResponseEntity<>(message,headers,HttpStatus.BAD_REQUEST);
         }
+        System.out.println("1111");
         if (!member.validatePassword(passwordEncoder, requestDto.getPassword())) {
             Message message = new Message();
             message.setStatus(StatusEnum.INVALID_MEMBER);
             message.setMessage("사용자를 찾을 수 없습니다.");
             return new ResponseEntity<>(message,headers,HttpStatus.BAD_REQUEST);
         }
+        System.out.println("22222");
 
         TokenDto tokenDto = tokenProvider.generateTokenDto(member);
         tokenToHeaders(tokenDto, response);
@@ -113,8 +116,8 @@ public class MemberService {
     }
 
     @Transactional(readOnly = true)
-    public Member isPresentMember(String username) {
-        Optional<Member> optionalMember = memberRepository.findByUsername(username);
+    public Member isPresentMember(String email) {
+        Optional<Member> optionalMember = memberRepository.findByEmail(email);
         return optionalMember.orElse(null);
     }
 

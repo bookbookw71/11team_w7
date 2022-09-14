@@ -26,8 +26,10 @@ public class PostService {
 
     @Transactional
     public ResponseDto<?> createPost(PostRequestDto requestDto, HttpServletRequest request) {
+        System.out.println("000");
         //TODO: requestDto 값이 부족할 때(null)
         Member member = tokenProvider.getMemberFromAuthentication();
+        System.out.println("111");
         if (null == member){
             return ResponseDto.fail("MEMBER_NOT_FOUND","인증된 멤버정보가 없습니다.");
         }
@@ -174,7 +176,7 @@ public class PostService {
     }
 
 
-    @Transactional(readOnly = true)
+    @org.springframework.transaction.annotation.Transactional(readOnly = true)
     public Post isPresentPost(Long id) {
         Optional<Post> optionalPost = postRepository.findById(id);
         return optionalPost.orElse(null);
