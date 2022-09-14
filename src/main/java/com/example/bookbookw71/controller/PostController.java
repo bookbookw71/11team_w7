@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @RequiredArgsConstructor
 @RestController
@@ -23,9 +24,9 @@ public class PostController {
 
 
     @RequestMapping(value = "/api/auth/post", method = RequestMethod.POST)
-    public ResponseDto<?> postCreate(@RequestBody PostRequestDto requestDto) {
+    public ResponseDto<?> postCreate(@RequestBody PostRequestDto requestDto, HttpServletResponse response) {
         System.out.println("포스트 컨트롤러");
-        return postService.createPost(requestDto);
+        return postService.createPost(requestDto, response);
     }
 
     @RequestMapping(value = "/api/auth/post", method = RequestMethod.GET)
@@ -40,13 +41,13 @@ public class PostController {
     }
 
     @DeleteMapping("/api/auth/post/{postId}")
-    public void deletePost(@PathVariable Long postId) {
-        postService.deletePost(postId);
+    public ResponseDto<?> deletePost(@PathVariable Long postId, HttpServletResponse response) {
+        return postService.deletePost(postId, response);
     }
 
     @RequestMapping(value = "/api/auth/post/{id}", method = RequestMethod.PUT)
-    public ResponseDto<?> updatePost(@PathVariable Long id, @RequestBody PostRequestDto postRequestDto) {
-        return postService.updatePost(id, postRequestDto);
+    public ResponseDto<?> updatePost(@PathVariable Long id, @RequestBody PostRequestDto postRequestDto, HttpServletResponse response) {
+        return postService.updatePost(id, postRequestDto, response);
     }
 
 }

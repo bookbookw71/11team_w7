@@ -20,8 +20,8 @@ Content-Type: application/json
 
 ######## 검색
 POST http://localhost:8080/api/search
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE3ODg3fQ.64nJL37uuw9r_Jyy9BElM2_ilrmeyEzeK4yyPWttuKo
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjA4ODd9.nIfw0SJcEr8316VIndBm6GikLOLrsRDwKgAOENToZOg
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE4OTk2fQ.HBwrdG7F2viC39_5MzNqdarDSSRkpbac73e-okIfVOQ
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjE5OTZ9.TQkkriJq3Y3s0gQPkg0y8i_riNDOeS2zPe7azKTsuVk
 Content-Type: application/json
 
 {
@@ -31,8 +31,8 @@ Content-Type: application/json
 
 ######## post 작성
 POST http://localhost:8080/api/auth/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE3ODg3fQ.64nJL37uuw9r_Jyy9BElM2_ilrmeyEzeK4yyPWttuKo
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjA4ODd9.nIfw0SJcEr8316VIndBm6GikLOLrsRDwKgAOENToZOg
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE5ODYzfQ.QHhm4wMXjOF9Riu13m_R7vFMOnHidAabKtEAvwyOCJc
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjI4NjN9.Xs3fc8AgHceHnXvT-9e7iEanWi8Yeh3GygzepouStDg
 Content-Type: application/json
 
 {
@@ -42,39 +42,39 @@ Content-Type: application/json
   "imageUrl": "url",
   "bookPage": 124,
   "star": 2,
-  "startTime": "2022-10-2",
-  "endTime": "2022-11-2"
+  "readStart": "2022-10-2",
+  "readEnd": "2022-11-2"
 }
 
 
 ######## 모든 포스트 조회
 GET http://localhost:8080/api/auth/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE3ODg3fQ.64nJL37uuw9r_Jyy9BElM2_ilrmeyEzeK4yyPWttuKo
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjA4ODd9.nIfw0SJcEr8316VIndBm6GikLOLrsRDwKgAOENToZOg
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE5ODYzfQ.QHhm4wMXjOF9Riu13m_R7vFMOnHidAabKtEAvwyOCJc
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjI4NjN9.Xs3fc8AgHceHnXvT-9e7iEanWi8Yeh3GygzepouStDg
 
 
 ######## 상세 포스트 조회
 GET http://localhost:8080/api/auth/post/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE3ODg3fQ.64nJL37uuw9r_Jyy9BElM2_ilrmeyEzeK4yyPWttuKo
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjA4ODd9.nIfw0SJcEr8316VIndBm6GikLOLrsRDwKgAOENToZOg
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE5ODYzfQ.QHhm4wMXjOF9Riu13m_R7vFMOnHidAabKtEAvwyOCJc
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjI4NjN9.Xs3fc8AgHceHnXvT-9e7iEanWi8Yeh3GygzepouStDg
 
 
 ######## 포스트 삭제
-DELETE http://localhost:8080/api/auth/post/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE3ODg3fQ.64nJL37uuw9r_Jyy9BElM2_ilrmeyEzeK4yyPWttuKo
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjA4ODd9.nIfw0SJcEr8316VIndBm6GikLOLrsRDwKgAOENToZOg
+DELETE http://localhost:8080/api/auth/post/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE5ODYzfQ.QHhm4wMXjOF9Riu13m_R7vFMOnHidAabKtEAvwyOCJc
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjI4NjN9.Xs3fc8AgHceHnXvT-9e7iEanWi8Yeh3GygzepouStDg
 
 
 ######## post 수정
-PUT http://localhost:8080/api/auth/post/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE3ODg3fQ.64nJL37uuw9r_Jyy9BElM2_ilrmeyEzeK4yyPWttuKo
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjA4ODd9.nIfw0SJcEr8316VIndBm6GikLOLrsRDwKgAOENToZOg
+PUT http://localhost:8080/api/auth/post/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE5ODYzfQ.QHhm4wMXjOF9Riu13m_R7vFMOnHidAabKtEAvwyOCJc
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjI4NjN9.Xs3fc8AgHceHnXvT-9e7iEanWi8Yeh3GygzepouStDg
 Content-Type: application/json
 
 {
   "title": "책제목3 수정",
   "star": 3,
-  "startTime": "2022-10-3",
-  "endTime": "2022-11-4"
+  "readStart": "2022-10-3",
+  "readEnd": "2022-11-4"
 }
 

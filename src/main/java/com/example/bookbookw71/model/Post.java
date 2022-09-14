@@ -40,10 +40,10 @@ public class Post extends Timestamped {
     private int star;
 
     @Column(nullable = false)
-    private String startTime;
+    private String readStart;
 
     @Column(nullable = false)
-    private String endTime;
+    private String readEnd;
 
 
     public Post(String title, String content, String username, String imageUrl, int bookPage) {
@@ -54,28 +54,28 @@ public class Post extends Timestamped {
         this.bookPage = bookPage;
     };
 
-    public Post(String title, String username, String content, String imageUrl, int bookPage, int score, String startTime, String endTime) {
+    public Post(String title, String username, String content, String imageUrl, int bookPage, int score, String readStart, String readEnd) {
         this.title = title;
         this.content =content;
         this.username = username;
         this.imageUrl = imageUrl;
         this.bookPage = bookPage;
         this.star = star;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.readStart = readStart;
+        this.readEnd = readEnd;
     };
 
     public Post(int star, String startTime, String endTime) {
         this.star = star;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.readStart = readStart;
+        this.readEnd = readEnd;
 
     };
 
     public void update(PostRequestDto postRequestDto) {
         this.title = postRequestDto.getTitle();
         this.star = star;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.readStart = readStart;
+        this.readEnd = readEnd;
     }
 }

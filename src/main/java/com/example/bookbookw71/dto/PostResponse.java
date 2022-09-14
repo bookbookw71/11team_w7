@@ -27,9 +27,9 @@ public class PostResponse {
 
     private int star;
 
-    private String startTime;
+    private String readStart;
 
-    private String endTime;
+    private String readEnd;
 
     private LocalDateTime createdAt;
 
