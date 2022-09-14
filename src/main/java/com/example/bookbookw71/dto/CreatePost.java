@@ -1,15 +1,12 @@
 package com.example.bookbookw71.dto;
 
 import com.example.bookbookw71.model.Member;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class PostRequestDto {
-    private long id;
-
-    private Member username;
+@AllArgsConstructor
+public class CreatePost {
 
     private String title;
 
@@ -24,4 +21,6 @@ public class PostRequestDto {
     private String startTime;
 
     private String endTime;
+
+    private Member username;
 }

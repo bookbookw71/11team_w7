@@ -1,4 +1,3 @@
-
 plugins {
     id 'org.springframework.boot' version '2.7.3'
     id 'io.spring.dependency-management' version '1.0.13.RELEASE'
@@ -39,6 +38,9 @@ dependencies {
     //오류 핸들링
     implementation group: 'org.webjars', name: 'webjars-locator', version: '0.32'
 
+    //controller
+    implementation group: 'io.swagger.parser.v3', name: 'swagger-parser-v3', version: '2.0.24'
+
 
 //    implementation 'io.jsonwebtoken:jjwt:0.9.1'
     // @NotBlank 등을 사용한 유효성 검사
@@ -58,4 +60,3 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
-

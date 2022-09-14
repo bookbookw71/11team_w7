@@ -1,21 +1,17 @@
 package com.example.bookbookw71.dto;
 
 import com.example.bookbookw71.model.Member;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Builder
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
+@Builder
 public class PostResponse {
     private long id;
 
-    private String username;
+    private Member username;
 
     private String title;
 
@@ -25,11 +21,11 @@ public class PostResponse {
 
     private int bookPage;
 
-    private int star;
+    private int score;
 
-    private String readStart;
+    private String startTime;
 
-    private String readEnd;
+    private String endTime;
 
     private LocalDateTime createdAt;
 

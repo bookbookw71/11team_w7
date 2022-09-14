@@ -1,11 +1,11 @@
 package com.example.bookbookw71.search;
 
-import com.example.bookbookw71.controller.response.ResponseDto;
-import com.example.bookbookw71.service.BookResponse;
+
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.helpers.ParserAdapter;
+
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.net.URLEncoder;
@@ -34,7 +34,7 @@ public class SearchService {
         hm.put("MaxResults", "5");
         hm.put("start", "1");
         hm.put("SearchTarget", "Book");
-        hm.put("output", "js");
+        hm.put("output", "xml");
 
         StringBuffer sb = new StringBuffer();
         Iterator<String> iter = hm.keySet().iterator();
@@ -47,37 +47,22 @@ public class SearchService {
         return BASE_SEARCH_URL + sb.toString();
     }
 
-    public ResponseDto<?> UrlResponse(String search){
-        String url = getUrl(search);
-        return ResponseDto.success(url);
+    public static void itemSave(String search) throws Exception {
+        String url = getUrl(search); //args를 이 부분을 request로 받도록 수정
+
+        SearchService api = new SearchService();
+        api.parseXml(url);
+
+//구현 중
+//        for(Item item : api.Items){
+//            Book book = new Book(item.title, item.description, item.imageUrl, item.startIndex);
+//        }
+
     }
 
-//
-//
-//    public static ResponseDto<?> itemSave(String search) throws Exception {
-//        String url = getUrl(search); //args를 이 부분을 request로 받도록 수정
-//        List<BookResponse> responseDtos = new ArrayList<>();
-//
-//        SearchService api = new SearchService();
-//        //이 부분이 안 됌 .. . ....
-//        api.parseXml(url);
-//
-//        System.out.println("아이템 url :"+ url);
-//
-//        for(Item item : api.Items){
-//            BookResponse bookResponse = new BookResponse(item.title, item.description, item.imageUrl, item.pricesales, item.author);
-//            responseDtos.add(bookResponse);
-//
-//            System.out.println("아이템 title : "+ item.title);
-//        }
-//
-//        return ResponseDto.success(responseDtos);
-//    }
 
 
-
-
-//    public String xmlToJSON(String jsonUrl) {
+//    public String xmlToJSON(String xml) {
 //        try{
 //
 //            JSONObject json = XML.toJSONObject(xml);
@@ -89,15 +74,12 @@ public class SearchService {
 //
 //    }
 
-//    public void parseXml(String xmlUrl) throws Exception {
-//        SAXParserFactory spf = SAXParserFactory.newInstance();
-//        SAXParser sp = spf.newSAXParser();
-//        ParserAdapter pa = new ParserAdapter(sp.getParser());
-//
-//        //여기 밑에가 문제!
-//        //pa.setContentHandler((ContentHandler) this);
-//
-//        pa.parse(xmlUrl);
-//    }
+    public void parseXml(String xmlUrl) throws Exception {
+        SAXParserFactory spf = SAXParserFactory.newInstance();
+        SAXParser sp = spf.newSAXParser();
+        ParserAdapter pa = new ParserAdapter(sp.getParser());
+        pa.setContentHandler((ContentHandler) this);
+        pa.parse(xmlUrl);
+    }
 
 }

@@ -9,10 +9,9 @@ import java.util.Optional;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-//    Optional<Post> get(Long id);
-//
-//    List<Post> getAll();
-//
-    Optional<Post> findPostById(Long id);
-    List<Post> findAll();
+    @Query("select post from Post post join fetch post.username where post.id=:id")
+    Optional<Post> get(Long id);
+
+    @Query("select post from Post post join fetch post.username")
+    List<Post> getAll();
 }

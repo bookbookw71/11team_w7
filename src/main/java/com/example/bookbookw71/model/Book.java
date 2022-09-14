@@ -1,6 +1,5 @@
 package com.example.bookbookw71.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,11 +15,11 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Where(clause = "deleted_at IS NULL")
-@SQLDelete(sql = "UPDATE book SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?")
+@SQLDelete(sql = "UPDATE member SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @Column(nullable = false)
     private String title;
@@ -33,8 +32,6 @@ public class Book {
 
     @Column(nullable = false)
     private int bookPage;
-
-    private String author;
 
     public Book(String title, String content, String imageUrl, int bookPage) {
         this.title = title;
