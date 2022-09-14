@@ -167,6 +167,9 @@ public class PostService {
         if (null == post){
             return ResponseDto.fail("POST_NOT_FOUND","게시글이 존재하지 않습니다.");
         }
+        if(true==post.validateMember(member)){
+            return ResponseDto.fail("NOT_AUTHORITY","작성자만 수정할 수 있습니다.");
+        }
 
 
         post.update(requestDto);
