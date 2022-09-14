@@ -10,8 +10,7 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
-//@Where(clause = "deleted_at IS NULL")
-//@SQLDelete(sql = "UPDATE post SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?")
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -70,6 +69,7 @@ public class Post extends Timestamped {
         this.star = star;
         this.startTime = startTime;
         this.endTime = endTime;
+
     };
 
     public void update(PostRequestDto postRequestDto) {

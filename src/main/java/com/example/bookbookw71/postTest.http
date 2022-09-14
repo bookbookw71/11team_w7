@@ -20,8 +20,8 @@ Content-Type: application/json
 
 ######## 검색
 POST http://localhost:8080/api/search
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE0MDI1fQ.cy0LtQNRrk_tqnf-XZBWPAmhkmaK9fV_BBk693EwOIo
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MTcwMjV9.YpFqK1e2SPEd9e5ZnNYt4L6ZMG0nX2lhCho-tVFVcAY
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE3ODg3fQ.64nJL37uuw9r_Jyy9BElM2_ilrmeyEzeK4yyPWttuKo
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjA4ODd9.nIfw0SJcEr8316VIndBm6GikLOLrsRDwKgAOENToZOg
 Content-Type: application/json
 
 {
@@ -30,9 +30,9 @@ Content-Type: application/json
 
 
 ######## post 작성
-POST http://localhost:8080/api/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE0MDI1fQ.cy0LtQNRrk_tqnf-XZBWPAmhkmaK9fV_BBk693EwOIo
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MTcwMjV9.YpFqK1e2SPEd9e5ZnNYt4L6ZMG0nX2lhCho-tVFVcAY
+POST http://localhost:8080/api/auth/post
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE3ODg3fQ.64nJL37uuw9r_Jyy9BElM2_ilrmeyEzeK4yyPWttuKo
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjA4ODd9.nIfw0SJcEr8316VIndBm6GikLOLrsRDwKgAOENToZOg
 Content-Type: application/json
 
 {
@@ -48,27 +48,27 @@ Content-Type: application/json
 
 
 ######## 모든 포스트 조회
-GET http://localhost:8080/api/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE0MDI1fQ.cy0LtQNRrk_tqnf-XZBWPAmhkmaK9fV_BBk693EwOIo
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MTcwMjV9.YpFqK1e2SPEd9e5ZnNYt4L6ZMG0nX2lhCho-tVFVcAY
+GET http://localhost:8080/api/auth/post
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE3ODg3fQ.64nJL37uuw9r_Jyy9BElM2_ilrmeyEzeK4yyPWttuKo
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjA4ODd9.nIfw0SJcEr8316VIndBm6GikLOLrsRDwKgAOENToZOg
 
 
 ######## 상세 포스트 조회
-GET http://localhost:8080/api/post/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE0MDI1fQ.cy0LtQNRrk_tqnf-XZBWPAmhkmaK9fV_BBk693EwOIo
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MTcwMjV9.YpFqK1e2SPEd9e5ZnNYt4L6ZMG0nX2lhCho-tVFVcAY
+GET http://localhost:8080/api/auth/post/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE3ODg3fQ.64nJL37uuw9r_Jyy9BElM2_ilrmeyEzeK4yyPWttuKo
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjA4ODd9.nIfw0SJcEr8316VIndBm6GikLOLrsRDwKgAOENToZOg
 
 
 ######## 포스트 삭제
-DELETE http://localhost:8080/api/post/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE0MDI1fQ.cy0LtQNRrk_tqnf-XZBWPAmhkmaK9fV_BBk693EwOIo
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MTcwMjV9.YpFqK1e2SPEd9e5ZnNYt4L6ZMG0nX2lhCho-tVFVcAY
+DELETE http://localhost:8080/api/auth/post/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE3ODg3fQ.64nJL37uuw9r_Jyy9BElM2_ilrmeyEzeK4yyPWttuKo
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjA4ODd9.nIfw0SJcEr8316VIndBm6GikLOLrsRDwKgAOENToZOg
 
 
 ######## post 수정
-PUT http://localhost:8080/api/post/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE0MDI1fQ.cy0LtQNRrk_tqnf-XZBWPAmhkmaK9fV_BBk693EwOIo
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MTcwMjV9.YpFqK1e2SPEd9e5ZnNYt4L6ZMG0nX2lhCho-tVFVcAY
+PUT http://localhost:8080/api/auth/post/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE3ODg3fQ.64nJL37uuw9r_Jyy9BElM2_ilrmeyEzeK4yyPWttuKo
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjA4ODd9.nIfw0SJcEr8316VIndBm6GikLOLrsRDwKgAOENToZOg
 Content-Type: application/json
 
 {

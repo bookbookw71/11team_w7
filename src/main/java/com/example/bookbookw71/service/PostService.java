@@ -105,6 +105,7 @@ public class PostService {
 
         Post post = isPresentPost(postId);
         post.update(requestDto);
+        postRepository.save(post);
 
         return ResponseDto.success(post);
     }

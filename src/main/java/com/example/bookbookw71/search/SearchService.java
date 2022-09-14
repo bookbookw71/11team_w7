@@ -34,7 +34,7 @@ public class SearchService {
         hm.put("MaxResults", "5");
         hm.put("start", "1");
         hm.put("SearchTarget", "Book");
-        hm.put("output", "xml");
+        hm.put("output", "js");
 
         StringBuffer sb = new StringBuffer();
         Iterator<String> iter = hm.keySet().iterator();
@@ -47,25 +47,32 @@ public class SearchService {
         return BASE_SEARCH_URL + sb.toString();
     }
 
-    public static ResponseDto<?> itemSave(String search) throws Exception {
-        String url = getUrl(search); //args를 이 부분을 request로 받도록 수정
-        List<BookResponse> responseDtos = new ArrayList<>();
-
-        SearchService api = new SearchService();
-        //이 부분이 안 됌 .. . ....
-        api.parseXml(url);
-
-        System.out.println("아이템 url :"+ url);
-
-        for(Item item : api.Items){
-            BookResponse bookResponse = new BookResponse(item.title, item.description, item.imageUrl, item.pricesales, item.author);
-            responseDtos.add(bookResponse);
-
-            System.out.println("아이템 title : "+ item.title);
-        }
-
-        return ResponseDto.success(responseDtos);
+    public ResponseDto<?> UrlResponse(String search){
+        String url = getUrl(search);
+        return ResponseDto.success(url);
     }
+
+//
+//
+//    public static ResponseDto<?> itemSave(String search) throws Exception {
+//        String url = getUrl(search); //args를 이 부분을 request로 받도록 수정
+//        List<BookResponse> responseDtos = new ArrayList<>();
+//
+//        SearchService api = new SearchService();
+//        //이 부분이 안 됌 .. . ....
+//        api.parseXml(url);
+//
+//        System.out.println("아이템 url :"+ url);
+//
+//        for(Item item : api.Items){
+//            BookResponse bookResponse = new BookResponse(item.title, item.description, item.imageUrl, item.pricesales, item.author);
+//            responseDtos.add(bookResponse);
+//
+//            System.out.println("아이템 title : "+ item.title);
+//        }
+//
+//        return ResponseDto.success(responseDtos);
+//    }
 
 
 
@@ -82,15 +89,15 @@ public class SearchService {
 //
 //    }
 
-    public void parseXml(String xmlUrl) throws Exception {
-        SAXParserFactory spf = SAXParserFactory.newInstance();
-        SAXParser sp = spf.newSAXParser();
-        ParserAdapter pa = new ParserAdapter(sp.getParser());
-
-        //여기 밑에가 문제!
-        //pa.setContentHandler((ContentHandler) this);
-
-        pa.parse(xmlUrl);
-    }
+//    public void parseXml(String xmlUrl) throws Exception {
+//        SAXParserFactory spf = SAXParserFactory.newInstance();
+//        SAXParser sp = spf.newSAXParser();
+//        ParserAdapter pa = new ParserAdapter(sp.getParser());
+//
+//        //여기 밑에가 문제!
+//        //pa.setContentHandler((ContentHandler) this);
+//
+//        pa.parse(xmlUrl);
+//    }
 
 }

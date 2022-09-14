@@ -22,29 +22,29 @@ public class PostController {
     public final BookRepository bookRepository;
 
 
-    @RequestMapping(value = "/api/post", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/auth/post", method = RequestMethod.POST)
     public ResponseDto<?> postCreate(@RequestBody PostRequestDto requestDto) {
         System.out.println("포스트 컨트롤러");
         return postService.createPost(requestDto);
     }
 
-    @RequestMapping(value = "/api/post", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/auth/post", method = RequestMethod.GET)
     public ResponseDto<?> getAllPost() {
         return postService.getAllPost();
     }
 
 
-    @GetMapping("/api/post/{postId}")
+    @GetMapping("/api/auth/post/{postId}")
     public ResponseDto<?> getOnePost(@PathVariable Long postId) {
         return postService.getOnePost(postId);
     }
 
-    @DeleteMapping("/api/post/{postId}")
+    @DeleteMapping("/api/auth/post/{postId}")
     public void deletePost(@PathVariable Long postId) {
         postService.deletePost(postId);
     }
 
-    @RequestMapping(value = "/api/post/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/api/auth/post/{id}", method = RequestMethod.PUT)
     public ResponseDto<?> updatePost(@PathVariable Long id, @RequestBody PostRequestDto postRequestDto) {
         return postService.updatePost(id, postRequestDto);
     }
