@@ -54,7 +54,7 @@ public class Post extends Timestamped {
         this.bookPage = bookPage;
     };
 
-    public Post(String title, String username, String content, String imageUrl, int bookPage, int score, String readStart, String readEnd) {
+    public Post(String title, String username, String content, String imageUrl, int bookPage, int star, String readStart, String readEnd) {
         this.title = title;
         this.content =content;
         this.username = username;
