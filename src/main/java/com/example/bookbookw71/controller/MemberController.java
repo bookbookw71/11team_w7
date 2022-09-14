@@ -7,10 +7,7 @@ import com.example.bookbookw71.controller.response.Message;
 import com.example.bookbookw71.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,25 +20,25 @@ public class MemberController {
     private final MemberService memberService;
 
     //닉네임 중복검사
-    @RequestMapping(value = "/api/member/nickname", method = RequestMethod.POST)
+    @PostMapping("/api/member/nickname")
     public ResponseEntity<Message> idCheck(@RequestBody @Valid MemberSignDto memberSignDto) {
         return memberService.idCheck(memberSignDto);
     }
 
     //이메일 중복검사
-    @RequestMapping(value = "/api/member/email", method = RequestMethod.POST)
+    @PostMapping("/api/member/email")
     public ResponseEntity<Message> emailCheck(@RequestBody @Valid MemberSignDto memberSignDto){
         return memberService.emailCheck(memberSignDto);
     }
 
     //회원가입
-    @RequestMapping(value = "/api/member/signup", method = RequestMethod.POST)
+    @PostMapping("/api/member/signup")
     public ResponseEntity<Message> signup(@RequestBody @Valid MemberRequestDto requestDto) {
         return memberService.createMember(requestDto);
     }
 
     //로그인
-    @RequestMapping(value = "/api/member/login", method = RequestMethod.POST)
+    @PostMapping("/api/member/login")
     public ResponseEntity<Message> login(@RequestBody @Valid LoginRequestDto requestDto, HttpServletResponse response) {
         return memberService.login(requestDto, response);
     }
@@ -52,7 +49,7 @@ public class MemberController {
 //    @RequestMapping(value = "/api/member/kakaologin", method = RequestMethod.GET)
 
     //로그아웃
-    @RequestMapping(value = "/api/auth/member/logout", method = RequestMethod.POST)
+    @PostMapping("/api/auth/member/logout")
     public ResponseEntity<Message> logout(HttpServletRequest request) {
         return memberService.logout(request);
     }

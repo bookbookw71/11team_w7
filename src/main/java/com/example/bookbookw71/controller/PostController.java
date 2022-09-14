@@ -21,13 +21,13 @@ public class PostController {
     public final BookRepository bookRepository;
 
 
-    @RequestMapping(value = "/api/auth/post", method = RequestMethod.POST)
+    @PostMapping("/api/auth/post")
     public ResponseDto<?> postCreate(@RequestBody PostRequestDto requestDto, HttpServletRequest request) {
         System.out.println("포스트 컨트롤러");
         return postService.createPost(requestDto, request);
     }
 
-    @RequestMapping(value = "/api/auth/post", method = RequestMethod.GET)
+    @GetMapping("/api/auth/post")
     public ResponseDto<?> getAllPost(HttpServletRequest request) {
         return postService.getAllPost(request);
     }
@@ -43,7 +43,7 @@ public class PostController {
         return postService.deletePost(postId,request);
     }
 
-    @RequestMapping(value = "/api/auth/post/{id}", method = RequestMethod.PUT)
+    @PutMapping("/api/auth/post/{id}")
     public ResponseDto<?> updatePost(@PathVariable Long id, @RequestBody PostRequestDto postRequestDto, HttpServletRequest request) {
         return postService.updatePost(id, postRequestDto, request);
     }
