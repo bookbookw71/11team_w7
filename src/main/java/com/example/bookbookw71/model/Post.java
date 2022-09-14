@@ -80,4 +80,8 @@ public class Post extends Timestamped {
         this.readStart = postRequestDto.getReadStart();
         this.readEnd = postRequestDto.getReadEnd();
     }
+
+    public boolean validateMember(Member member) {
+        return !this.getUsername().equals(member.getUsername());
+    }
 }

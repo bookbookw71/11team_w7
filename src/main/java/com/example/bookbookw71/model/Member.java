@@ -53,4 +53,5 @@ public class Member {
         this.role = role;
         this.kakaoId=kakaoId;
     }
+
 }

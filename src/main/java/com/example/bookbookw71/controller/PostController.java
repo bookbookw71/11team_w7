@@ -24,30 +24,30 @@ public class PostController {
 
 
     @RequestMapping(value = "/api/auth/post", method = RequestMethod.POST)
-    public ResponseDto<?> postCreate(@RequestBody PostRequestDto requestDto, HttpServletResponse response) {
+    public ResponseDto<?> postCreate(@RequestBody PostRequestDto requestDto, HttpServletRequest request) {
         System.out.println("포스트 컨트롤러");
-        return postService.createPost(requestDto, response);
+        return postService.createPost(requestDto, request);
     }
 
     @RequestMapping(value = "/api/auth/post", method = RequestMethod.GET)
-    public ResponseDto<?> getAllPost() {
-        return postService.getAllPost();
+    public ResponseDto<?> getAllPost(HttpServletRequest request) {
+        return postService.getAllPost(request);
     }
 
 
     @GetMapping("/api/auth/post/{postId}")
-    public ResponseDto<?> getOnePost(@PathVariable Long postId) {
-        return postService.getOnePost(postId);
+    public ResponseDto<?> getOnePost(@PathVariable Long postId, HttpServletRequest request) {
+        return postService.getOnePost(postId, request);
     }
 
     @DeleteMapping("/api/auth/post/{postId}")
-    public ResponseDto<?> deletePost(@PathVariable Long postId, HttpServletResponse response) {
-        return postService.deletePost(postId, response);
+    public ResponseDto<?> deletePost(@PathVariable Long postId, HttpServletRequest request) {
+        return postService.deletePost(postId,request);
     }
 
     @RequestMapping(value = "/api/auth/post/{id}", method = RequestMethod.PUT)
-    public ResponseDto<?> updatePost(@PathVariable Long id, @RequestBody PostRequestDto postRequestDto, HttpServletResponse response) {
-        return postService.updatePost(id, postRequestDto, response);
+    public ResponseDto<?> updatePost(@PathVariable Long id, @RequestBody PostRequestDto postRequestDto, HttpServletRequest request) {
+        return postService.updatePost(id, postRequestDto, request);
     }
 
 }

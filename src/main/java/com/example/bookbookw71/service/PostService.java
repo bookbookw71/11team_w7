@@ -6,12 +6,16 @@ import com.example.bookbookw71.dto.PostResponse;
 import com.example.bookbookw71.jwt.TokenProvider;
 import com.example.bookbookw71.model.Member;
 import com.example.bookbookw71.model.Post;
+import com.example.bookbookw71.model.StatusEnum;
 import com.example.bookbookw71.repository.MemberRepository;
 import com.example.bookbookw71.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -26,11 +30,18 @@ public class PostService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public ResponseDto<?> createPost(PostRequestDto requestDto, HttpServletResponse response) {
+    public ResponseDto<?> createPost(PostRequestDto requestDto, HttpServletRequest request) {
+        //TODO: requestDto 값이 부족할 때(null)
         Member member = tokenProvider.getMemberFromAuthentication();
-        //TODO: fail인 경우 고려
+        if (null == member){
+            return ResponseDto.fail("MEMBER_NOT_FOUND","인증된 멤버정보가 없습니다.");
+        }
+        if (!tokenProvider.validateToken(request.getHeader("Authorization").substring(7))) {
+            tokenProvider.deleteRefreshToken(member);
+            return ResponseDto.fail("INVALID_TOKEN","Refresh-Token이 없습니다");
+        }
 
-        Post post = new Post(requestDto.getTitle(), member.getUsername(), requestDto.getContent(), requestDto.getImageUrl(), requestDto.getBookPage(), requestDto.getStar(), requestDto.getReadStart(), requestDto.getReadEnd());
+            Post post = new Post(requestDto.getTitle(), member.getUsername(), requestDto.getContent(), requestDto.getImageUrl(), requestDto.getBookPage(), requestDto.getStar(), requestDto.getReadStart(), requestDto.getReadEnd());
         postRepository.save(post);
 
         return ResponseDto.success(
@@ -50,7 +61,16 @@ public class PostService {
         );
     }
 
-    public ResponseDto<?> getAllPost(){
+    public ResponseDto<?> getAllPost(HttpServletRequest request){
+        Member member = tokenProvider.getMemberFromAuthentication();
+        if (null == member){
+            return ResponseDto.fail("MEMBER_NOT_FOUND","인증된 멤버정보가 없습니다.");
+        }
+        if (!tokenProvider.validateToken(request.getHeader("Authorization").substring(7))) {
+            tokenProvider.deleteRefreshToken(member);//이거 왜 넣는건지 모름
+            return ResponseDto.fail("INVALID_TOKEN","Refresh-Token이 없습니다");
+        }
+
         List<Post> postList = postRepository.findAll();
         List<PostResponse> responseDtos = new ArrayList<>();
 
@@ -73,9 +93,22 @@ public class PostService {
         return ResponseDto.success(responseDtos);
     }
 
-    public ResponseDto<?> getOnePost(Long postId) {
-        Optional<Post> optionalPost=postRepository.findById(postId);
-        Post post=optionalPost.get();
+    public ResponseDto<?> getOnePost(Long postId, HttpServletRequest request) {
+        Member member = tokenProvider.getMemberFromAuthentication();
+        Post posts = isPresentPost(postId);
+        if (null == member){
+            return ResponseDto.fail("MEMBER_NOT_FOUND","인증된 멤버정보가 없습니다.");
+        }
+        if (!tokenProvider.validateToken(request.getHeader("Authorization").substring(7))) {
+            tokenProvider.deleteRefreshToken(member);//이거 왜 넣는건지 모름
+            return ResponseDto.fail("INVALID_TOKEN","Refresh-Token이 없습니다");
+        }
+        if (null == posts){
+            return ResponseDto.fail("POST_NOT_FOUND","게시글이 존재하지 않습니다.");
+        }
+
+        Optional<Post> optionalPost = postRepository.findById(postId);
+        Post post = optionalPost.get();
 
         return ResponseDto.success(
                 PostResponse.builder()
@@ -94,11 +127,23 @@ public class PostService {
         );
     }
 
-    public ResponseDto<?> deletePost(Long postId, HttpServletResponse response){
+    public ResponseDto<?> deletePost(Long postId, HttpServletRequest request){
         Member member = tokenProvider.getMemberFromAuthentication();
-        //작성자 확인, 토큰확인, 존재하는 게시글 여부 확인 필요함
-//        Optional<Post> optionalPost=postRepository.findById(postId);
-//        Post post=optionalPost.get();
+        Post post = isPresentPost(postId);
+        if (null == member){
+            return ResponseDto.fail("MEMBER_NOT_FOUND","인증된 멤버정보가 없습니다.");
+        }
+        if (!tokenProvider.validateToken(request.getHeader("Authorization").substring(7))) {
+            tokenProvider.deleteRefreshToken(member);
+            return ResponseDto.fail("INVALID_TOKEN","Refresh-Token이 없습니다");
+        }
+        if (null == post){
+            return ResponseDto.fail("POST_NOT_FOUND","게시글이 존재하지 않습니다.");
+        }
+        if(true==post.validateMember(member)){
+            return ResponseDto.fail("NOT_AUTHORITY","작성자만 수정할 수 있습니다.");
+        }
+
 
         System.out.println("포스트 지우기 시도");
         postRepository.deleteById(postId);
@@ -108,10 +153,22 @@ public class PostService {
     }
 
 
-    //TODO: post 수정기능 구현 해야 함.
-    public ResponseDto<?> updatePost(Long postId, PostRequestDto requestDto, HttpServletResponse response){
+    public ResponseDto<?> updatePost(Long postId, PostRequestDto requestDto, HttpServletRequest request){
+        //TODO: requestDto 값이 부족할 때(null)
         Member member = tokenProvider.getMemberFromAuthentication();
         Post post = isPresentPost(postId);
+        if (null == member){
+            return ResponseDto.fail("MEMBER_NOT_FOUND","인증된 멤버정보가 없습니다.");
+        }
+        if (!tokenProvider.validateToken(request.getHeader("Authorization").substring(7))) {
+            tokenProvider.deleteRefreshToken(member);
+            return ResponseDto.fail("INVALID_TOKEN","Refresh-Token이 없습니다");
+        }
+        if (null == post){
+            return ResponseDto.fail("POST_NOT_FOUND","게시글이 존재하지 않습니다.");
+        }
+
+
         post.update(requestDto);
         postRepository.save(post);
 
