@@ -28,9 +28,9 @@ public class PostService {
     @Transactional
     public ResponseDto<?> createPost(PostRequestDto requestDto, HttpServletResponse response) {
         Member member = tokenProvider.getMemberFromAuthentication();
-        //fail인 경우 고려 X
+        //TODO: fail인 경우 고려
 
-        Post post = new Post(requestDto.getTitle(), member.getUsername(), requestDto.getContent(), requestDto.getImageUrl(), requestDto.getBookPage(), requestDto.getScore(), requestDto.getReadStart(), requestDto.getReadEnd());
+        Post post = new Post(requestDto.getTitle(), member.getUsername(), requestDto.getContent(), requestDto.getImageUrl(), requestDto.getBookPage(), requestDto.getStar(), requestDto.getReadStart(), requestDto.getReadEnd());
         postRepository.save(post);
 
         return ResponseDto.success(

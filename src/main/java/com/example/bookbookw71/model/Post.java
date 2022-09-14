@@ -65,8 +65,9 @@ public class Post extends Timestamped {
         this.readEnd = readEnd;
     };
 
-    public Post(int star, String startTime, String endTime) {
+    public Post(int star, String content, String readStart, String readEnd) {
         this.star = star;
+        this.content =content;
         this.readStart = readStart;
         this.readEnd = readEnd;
 
@@ -74,8 +75,9 @@ public class Post extends Timestamped {
 
     public void update(PostRequestDto postRequestDto) {
         this.title = postRequestDto.getTitle();
-        this.star = star;
-        this.readStart = readStart;
-        this.readEnd = readEnd;
+        this.star = postRequestDto.getStar();
+        this.content =postRequestDto.getContent();
+        this.readStart = postRequestDto.getReadStart();
+        this.readEnd = postRequestDto.getReadEnd();
     }
 }

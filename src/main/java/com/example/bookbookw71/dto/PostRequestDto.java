@@ -17,7 +17,7 @@ public class PostRequestDto {
 
     private int bookPage;
 
-    private int score;
+    private int star;
 
     private String readStart;
 

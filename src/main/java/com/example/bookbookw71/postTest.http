@@ -20,8 +20,8 @@ Content-Type: application/json
 
 ######## 검색
 POST http://localhost:8080/api/search
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE4OTk2fQ.HBwrdG7F2viC39_5MzNqdarDSSRkpbac73e-okIfVOQ
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjE5OTZ9.TQkkriJq3Y3s0gQPkg0y8i_riNDOeS2zPe7azKTsuVk
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTIxMDc3fQ.cHmHjQEe6lCxIpdoqgjRf-0QDcw-MRIca0asd0HoDaQ
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjQwNzd9.9LY1rzN7WdBc_If5yiloV0Izri-24vLEqTzpBkbOC1A
 Content-Type: application/json
 
 {
@@ -31,13 +31,12 @@ Content-Type: application/json
 
 ######## post 작성
 POST http://localhost:8080/api/auth/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE5ODYzfQ.QHhm4wMXjOF9Riu13m_R7vFMOnHidAabKtEAvwyOCJc
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjI4NjN9.Xs3fc8AgHceHnXvT-9e7iEanWi8Yeh3GygzepouStDg
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTIxMDc3fQ.cHmHjQEe6lCxIpdoqgjRf-0QDcw-MRIca0asd0HoDaQ
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjQwNzd9.9LY1rzN7WdBc_If5yiloV0Izri-24vLEqTzpBkbOC1A
 Content-Type: application/json
 
 {
   "title": "책제목2",
-  "username": "유저네임2",
   "content": "책 상세 내용2",
   "imageUrl": "url",
   "bookPage": 124,
@@ -49,8 +48,8 @@ Content-Type: application/json
 
 ######## 모든 포스트 조회
 GET http://localhost:8080/api/auth/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTE5ODYzfQ.QHhm4wMXjOF9Riu13m_R7vFMOnHidAabKtEAvwyOCJc
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjI4NjN9.Xs3fc8AgHceHnXvT-9e7iEanWi8Yeh3GygzepouStDg
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTIxMDc3fQ.cHmHjQEe6lCxIpdoqgjRf-0QDcw-MRIca0asd0HoDaQ
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MjQwNzd9.9LY1rzN7WdBc_If5yiloV0Izri-24vLEqTzpBkbOC1A
 
 
 ######## 상세 포스트 조회
