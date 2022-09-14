@@ -57,7 +57,7 @@ public class MemberService {
 
     @Transactional
     public ResponseEntity<Message> login(LoginRequestDto requestDto, HttpServletResponse response) {
-        Member member = isPresentMember(requestDto.getUsername());
+        Member member = isPresentMember(requestDto.getEmail());
         HttpHeaders headers = new HttpHeaders();
 
         if (null == member) {
