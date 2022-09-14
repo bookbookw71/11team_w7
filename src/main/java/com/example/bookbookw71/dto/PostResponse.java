@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class PostResponse {
     private long id;
 
-    private Member username;
+    private String username;
 
     private String title;
 
@@ -21,11 +21,11 @@ public class PostResponse {
 
     private int bookPage;
 
-    private int score;
+    private int star;
 
-    private String startTime;
+    private String readStart;
 
-    private String endTime;
+    private String readEnd;
 
     private LocalDateTime createdAt;
 

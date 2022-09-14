@@ -9,7 +9,7 @@ import lombok.Getter;
 public class PostRequestDto {
     private long id;
 
-    private Member username;
+    private String username;
 
     private String title;
 
@@ -19,9 +19,9 @@ public class PostRequestDto {
 
     private int bookPage;
 
-    private int score;
+    private int star;
 
-    private String startTime;
+    private String readStart;
 
-    private String endTime;
+    private String readEnd;
 }

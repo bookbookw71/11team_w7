@@ -20,7 +20,7 @@ public class MemberRequestDto {
     private String username;
 
     @NotBlank
-    @Size(min = 4, max = 32)
+    @Size(min = 4, max = 20)
     private String password;
 
 //    @NotBlank

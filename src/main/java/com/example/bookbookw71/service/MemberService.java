@@ -78,6 +78,7 @@ public class MemberService {
         Message message = new Message(MemberResponseDto.builder()
                 .id(member.getId())
                 .username(member.getUsername())
+                .email(member.getEmail())
                 .build()
         );
         return new ResponseEntity<>(message,headers,HttpStatus.OK);

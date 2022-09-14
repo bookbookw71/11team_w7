@@ -1,6 +1,7 @@
 package com.example.bookbookw71.model;
 
 
+import com.example.bookbookw71.dto.PostRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,22 +10,18 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Where(clause = "deleted_at IS NULL")
-@SQLDelete(sql = "UPDATE post SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?")
 public class Post extends Timestamped {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "writer_id")
-    private Member username;
+    @Column(nullable = false)
+    private String username;
 
     @Column(nullable = false)
     private String title;
@@ -39,40 +36,51 @@ public class Post extends Timestamped {
     private int bookPage;
 
     @Column(nullable = false)
-    private int score;
+    private int star;
 
     @Column(nullable = false)
-    private String startTime = "";
+    private String readStart;
 
     @Column(nullable = false)
-    private String endTime = "";
+    private String readEnd;
 
 
-    public Post(String title, Member username, String imageUrl, int bookPage) {
+    public Post(String title, String content, String username, String imageUrl, int bookPage) {
         this.title = title;
+        this.content =content;
         this.imageUrl = imageUrl;
         this.username = username;
         this.bookPage = bookPage;
     };
 
-    public Post(String title, Member username, String imageUrl, int bookPage, int score, String startTime, String endTime) {
+    public Post(String title, String username, String content, String imageUrl, int bookPage, int star, String readStart, String readEnd) {
         this.title = title;
+        this.content =content;
         this.username = username;
         this.imageUrl = imageUrl;
         this.bookPage = bookPage;
-        this.score = score;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.star = star;
+        this.readStart = readStart;
+        this.readEnd = readEnd;
     };
 
-    public Post(int score, String startTime, String endTime) {
-        this.score = score;
-        this.startTime = startTime;
-        this.endTime = endTime;
+    public Post(int star, String content, String readStart, String readEnd) {
+        this.star = star;
+        this.content =content;
+        this.readStart = readStart;
+        this.readEnd = readEnd;
+
     };
 
+    public void update(PostRequestDto postRequestDto) {
+        this.title = postRequestDto.getTitle();
+        this.star = postRequestDto.getStar();
+        this.content =postRequestDto.getContent();
+        this.readStart = postRequestDto.getReadStart();
+        this.readEnd = postRequestDto.getReadEnd();
+    }
 
-    public void setContent(String content) {
-        this.content = content;
+    public boolean validateMember(Member member) {
+        return !this.getUsername().equals(member.getUsername());
     }
 }
