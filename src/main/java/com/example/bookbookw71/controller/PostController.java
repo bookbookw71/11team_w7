@@ -43,9 +43,9 @@ public class PostController {
         return postService.deletePost(postId,request);
     }
 
-    @PutMapping("/api/auth/post/{id}")
-    public ResponseDto<?> updatePost(@PathVariable Long id, @RequestBody PostRequestDto postRequestDto, HttpServletRequest request) {
-        return postService.updatePost(id, postRequestDto, request);
+    @PutMapping("/api/auth/post/{postId}")
+    public ResponseDto<?> updatePost(@PathVariable Long postId, @RequestBody PostRequestDto postRequestDto, HttpServletRequest request) {
+        return postService.updatePost(postId, postRequestDto, request);
     }
 
 }

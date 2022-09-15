@@ -1,7 +1,7 @@
 package com.example.bookbookw71.controller;
 
-import com.example.bookbookw71.controller.request.LoginRequestDto;
-import com.example.bookbookw71.controller.request.MemberRequestDto;
+import com.example.bookbookw71.controller.request.MemberLoginDto;
+import com.example.bookbookw71.controller.request.MemberCheckDto;
 import com.example.bookbookw71.controller.request.MemberSignDto;
 import com.example.bookbookw71.controller.response.Message;
 import com.example.bookbookw71.service.MemberService;
@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+
+
 @RequiredArgsConstructor
 @RestController
 public class MemberController {
@@ -21,25 +23,25 @@ public class MemberController {
 
     //닉네임 중복검사
     @PostMapping("/api/member/nickname")
-    public ResponseEntity<Message> idCheck(@RequestBody @Valid MemberSignDto memberSignDto) {
-        return memberService.idCheck(memberSignDto);
+    public ResponseEntity<Message> idCheck(@RequestBody @Valid MemberCheckDto memberCheckDto) {
+        return memberService.idCheck(memberCheckDto);
     }
 
     //이메일 중복검사
     @PostMapping("/api/member/email")
-    public ResponseEntity<Message> emailCheck(@RequestBody @Valid MemberSignDto memberSignDto){
-        return memberService.emailCheck(memberSignDto);
+    public ResponseEntity<Message> emailCheck(@RequestBody @Valid MemberCheckDto memberCheckDto){
+        return memberService.emailCheck(memberCheckDto);
     }
 
     //회원가입
     @PostMapping("/api/member/signup")
-    public ResponseEntity<Message> signup(@RequestBody @Valid MemberRequestDto requestDto) {
-        return memberService.createMember(requestDto);
+    public ResponseEntity<Message> signup(@RequestBody @Valid MemberSignDto memberSignDto) {
+        return memberService.createMember(memberSignDto);
     }
 
     //로그인
     @PostMapping("/api/member/login")
-    public ResponseEntity<Message> login(@RequestBody @Valid LoginRequestDto requestDto, HttpServletResponse response) {
+    public ResponseEntity<Message> login(@RequestBody @Valid MemberLoginDto requestDto, HttpServletResponse response) {
         return memberService.login(requestDto, response);
     }
 
