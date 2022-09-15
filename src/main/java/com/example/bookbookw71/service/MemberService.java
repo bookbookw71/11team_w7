@@ -48,7 +48,7 @@ public class MemberService {
                 .role(MemberRoleEnum.MEMBER)
                 .build();
         memberRepository.save(member);
-        Message message = new Message(member);
+        Message message = new Message("회원가입 성공",200);
         return new ResponseEntity<>(message,headers,HttpStatus.OK);
     }
 
@@ -147,15 +147,11 @@ public class MemberService {
         headers.setContentType(new MediaType("application","json", Charset.forName("UTF-8")));
 
         if(member.isPresent()){
-            Message message = new Message();
-            message.setStatus(StatusEnum.ID_DUPLICATION);
-            message.setMessage("중복된 아이디입니다.");
+            Message message=new Message(false);
             return new ResponseEntity<>(message,headers,HttpStatus.BAD_REQUEST);
         }
         else{
-            Message message = new Message(memberCheckDto);
-            message.setStatus(StatusEnum.OK);
-            message.setMessage("Success");
+            Message message=new Message(false);
             return new ResponseEntity<>(message,headers,HttpStatus.OK);
         }
     }
@@ -166,15 +162,11 @@ public class MemberService {
         headers.setContentType(new MediaType("application","json", Charset.forName("UTF-8")));
 
         if(member.isPresent()){
-            Message message = new Message();
-            message.setStatus(StatusEnum.ID_DUPLICATION);
-            message.setMessage("중복된 이메일입니다.");
+            Message message=new Message(false);
             return new ResponseEntity<>(message,headers,HttpStatus.BAD_REQUEST);
         }
         else{
-            Message message = new Message(memberCheckDto);
-            message.setStatus(StatusEnum.OK);
-            message.setMessage("Success");
+            Message message=new Message(false);
             return new ResponseEntity<>(message,headers,HttpStatus.OK);
         }
     }
