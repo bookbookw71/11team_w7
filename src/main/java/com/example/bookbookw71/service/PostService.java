@@ -66,7 +66,7 @@ public class PostService {
             return ResponseDto.fail("INVALID_TOKEN","Refresh-Token이 없습니다");
         }
 
-        List<Post> postList = postRepository.findAll();
+        List<Post> postList = postRepository.findPostByUsername(member.getUsername());
         List<PostResponse> responseDtos = new ArrayList<>();
 
         for(Post post:postList){
