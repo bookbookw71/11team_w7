@@ -151,7 +151,7 @@ public class MemberService {
             return new ResponseEntity<>(message,headers,HttpStatus.BAD_REQUEST);
         }
         else{
-            Message message=new Message(false);
+            Message message=new Message(true);
             return new ResponseEntity<>(message,headers,HttpStatus.OK);
         }
     }
@@ -166,7 +166,7 @@ public class MemberService {
             return new ResponseEntity<>(message,headers,HttpStatus.BAD_REQUEST);
         }
         else{
-            Message message=new Message(false);
+            Message message=new Message(true);
             return new ResponseEntity<>(message,headers,HttpStatus.OK);
         }
     }

@@ -21,7 +21,5 @@ public class MemberSignDto {
 
     @Size(min=4,max = 20)
     private String password;
-    //private boolean admin = false;
-    private String adminToken = "";
 
 }
