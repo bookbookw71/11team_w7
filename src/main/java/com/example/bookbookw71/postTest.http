@@ -24,14 +24,14 @@ POST http://localhost:8080/api/member/login
 Content-Type: application/json
 
 {
-  "username":"arywrew",
+  "email":"test2@naver.com",
   "password":"password123"
 }
 
 ######## 검색
 POST http://localhost:8080/api/search
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTM1MDU0fQ.IvZxqflpM7qM4wGmcH5XSlgVxFpm-DdiNZDausUQl5E
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MzgwNTR9.DXPXf36xNejrMrjaKSiAFPl46HOANdlEa80NVjlkDnw
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMjEzNjgyfQ.ZsujaS5bjOZ03RonMV21RXWqduVGQykwVUNdLwC_tr4
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM4MTY2ODJ9.n_1QtWDY-QWIBnsEc0lrpYSbngR1cV9VgE6CfZ9jMLo
 Content-Type: application/json
 
 {
@@ -41,13 +41,13 @@ Content-Type: application/json
 
 ######## post 작성
 POST http://localhost:8080/api/auth/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMDEiLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjMxMzk4NTJ9.CF0EnjLLdqON4C0OL6pXROdZiCh0DQiyZ5qAQ-4fK3c
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3NDI4NTJ9.zyqiN4Q1JJWz_VuU8pifGs7HYoavyXGIj8Ok62Io6s0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMjEzNjgyfQ.ZsujaS5bjOZ03RonMV21RXWqduVGQykwVUNdLwC_tr4
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM4MTY2ODJ9.n_1QtWDY-QWIBnsEc0lrpYSbngR1cV9VgE6CfZ9jMLo
 Content-Type: application/json
 
 {
-  "title": "책제목3",
-  "content": "책 상세 내용3",
+  "title": "책제목1",
+  "content": "책 상세 내용1",
   "imageUrl": "url",
   "bookPage": 124,
   "star": 2,

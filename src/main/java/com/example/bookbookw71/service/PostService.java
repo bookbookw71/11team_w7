@@ -62,28 +62,28 @@ public class PostService {
             return ResponseDto.fail("MEMBER_NOT_FOUND","인증된 멤버정보가 없습니다.");
         }
         if (!tokenProvider.validateToken(request.getHeader("Authorization").substring(7))) {
-            tokenProvider.deleteRefreshToken(member);//이거 왜 넣는건지 모름
+            tokenProvider.deleteRefreshToken(member);
             return ResponseDto.fail("INVALID_TOKEN","Refresh-Token이 없습니다");
         }
 
-        List<Post> postList = postRepository.findAll();
+        List<Post> postList = postRepository.findPostByUsername(member.getUsername());
         List<PostResponse> responseDtos = new ArrayList<>();
 
         for(Post post:postList){
-            responseDtos.add(PostResponse.builder()
-                    .id(post.getId())
-                    .title(post.getTitle())
-                    .content(post.getContent())
-                    .username(post.getUsername())
-                    .imageUrl(post.getImageUrl())
-                    .bookPage(post.getBookPage())
-                    .star(post.getStar())
-                    .readStart(post.getReadStart())
-                    .readEnd(post.getReadEnd())
-                    .createdAt(post.getCreatedAt())
-                    .modifiedAt(post.getModifiedAt())
-                    .build()
-            );
+                responseDtos.add(PostResponse.builder()
+                        .id(post.getId())
+                        .title(post.getTitle())
+                        .content(post.getContent())
+                        .username(post.getUsername())
+                        .imageUrl(post.getImageUrl())
+                        .bookPage(post.getBookPage())
+                        .star(post.getStar())
+                        .readStart(post.getReadStart())
+                        .readEnd(post.getReadEnd())
+                        .createdAt(post.getCreatedAt())
+                        .modifiedAt(post.getModifiedAt())
+                        .build()
+                );
         }
         return ResponseDto.success(responseDtos);
     }
