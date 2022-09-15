@@ -3,10 +3,10 @@ package com.example.bookbookw71.jwt;
 import com.example.bookbookw71.controller.request.TokenDto;
 import com.example.bookbookw71.controller.response.ResponseDto;
 import com.example.bookbookw71.model.Member;
+import com.example.bookbookw71.model.MemberRoleEnum;
 import com.example.bookbookw71.model.RefreshToken;
 import com.example.bookbookw71.model.UserDetailsImpl;
 import com.example.bookbookw71.repository.RefreshTokenRepository;
-import com.example.bookbookw71.shared.Authority;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -51,7 +51,7 @@ public class TokenProvider {
 
         String accessToken = Jwts.builder()
                 .setSubject(member.getUsername())
-                .claim(AUTHORITIES_KEY, Authority.ROLE_MEMBER.toString())
+                .claim(AUTHORITIES_KEY, MemberRoleEnum.MEMBER.toString())
                 .setExpiration(accessTokenExpiresIn)
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
@@ -62,9 +62,8 @@ public class TokenProvider {
                 .compact();
 
         RefreshToken refreshTokenObject = RefreshToken.builder()
-                .id(member.getId())
-                .member(member)
-                .vvalue(refreshToken)
+                .key(member.getUsername())
+                .value(refreshToken)
                 .build();
 
         refreshTokenRepository.save(refreshTokenObject);
@@ -106,7 +105,7 @@ public class TokenProvider {
 
     @Transactional(readOnly = true)
     public RefreshToken isPresentRefreshToken(Member member) {
-        Optional<RefreshToken> optionalRefreshToken = refreshTokenRepository.findByMember(member);
+        Optional<RefreshToken> optionalRefreshToken = refreshTokenRepository.findByKkey(member.getUsername());
         return optionalRefreshToken.orElse(null);
     }
 

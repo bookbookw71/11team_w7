@@ -9,20 +9,21 @@ import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 public class RefreshToken extends Timestamped {
 
     @Id
     @Column(nullable = false)
-    private Long id;
+    private String kkey;
 
-    @JoinColumn(name = "member_id", nullable = false)
-    @OneToOne(fetch = FetchType.LAZY)
-    private Member member;
 
     @Column(nullable = false)
     private String vvalue;
+
+    @Builder
+    public RefreshToken(String key,String value){
+        this.kkey=key;
+        this.vvalue=value;
+    }
 
 }

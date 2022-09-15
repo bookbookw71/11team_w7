@@ -1,6 +1,7 @@
 package com.example.bookbookw71.model;
 
 
+import com.example.bookbookw71.oauth.dto.GoogleUser;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,8 +34,8 @@ public class Member {
     @Enumerated(value = EnumType.STRING)
     private MemberRoleEnum role;
 
-    @Column(unique = true)
-    private Long kakaoId;
+//  @Column(unique = true)
+//  private Long kakaoId;
 
     public boolean validatePassword(PasswordEncoder passwordEncoder, String password) {
         return passwordEncoder.matches(password, this.password);
@@ -44,14 +45,21 @@ public class Member {
         this.password = password;
         this.email = email;
         this.role = role;
-        this.kakaoId=null;
+        //this.kakaoId=null;
     }
     public Member(String username,String password, String email, MemberRoleEnum role, Long kakaoId){
         this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;
-        this.kakaoId=kakaoId;
+        //this.kakaoId=kakaoId;
+    }
+
+    public Member(GoogleUser googleUser){
+        this.username=googleUser.getName();
+        this.email=googleUser.getEmail();
+        this.password="google pw";
+        this.role=MemberRoleEnum.MEMBER;
     }
 
 }

@@ -1,6 +1,5 @@
 package com.example.bookbookw71.model;
 
-import com.example.bookbookw71.shared.Authority;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +19,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(Authority.ROLE_MEMBER.toString());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(MemberRoleEnum.MEMBER.toString());
         Collection<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(authority);
         return authorities;

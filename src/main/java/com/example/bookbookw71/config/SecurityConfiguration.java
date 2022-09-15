@@ -79,6 +79,7 @@ public class SecurityConfiguration extends WebMvcConfigurationSupport {
                 .antMatchers(PERMIT_URL_ARRAY).permitAll()
                 .antMatchers("/css/**","/images/**","/js/**").permitAll()
                 .anyRequest().authenticated()
+                //.and().oauth2Login() //Oauth2Login
 
                 .and()
                 .apply(new JwtSecurityConfiguration(SECRET_KEY, tokenProvider, userDetailsService));
