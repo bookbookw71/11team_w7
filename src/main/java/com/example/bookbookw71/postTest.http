@@ -3,9 +3,9 @@ POST http://localhost:8080/api/member/signup
 Content-Type: application/json
 
 {
-  "username":"dnsielf",
-  "email":"test2@naver.com",
-  "password":"password123"
+  "username":"sdsadasdad",
+  "email":"ddd@naver.com",
+  "password":"1234"
 }
 
 ######## 회원가입2
@@ -24,8 +24,8 @@ POST http://localhost:8080/api/member/login
 Content-Type: application/json
 
 {
-  "email":"test2@naver.com",
-  "password":"password123"
+  "email":"ddd@naver.com",
+  "password":"1234"
 }
 
 ######## 검색
@@ -41,8 +41,9 @@ Content-Type: application/json
 
 ######## post 작성
 POST http://localhost:8080/api/auth/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMjEzNjgyfQ.ZsujaS5bjOZ03RonMV21RXWqduVGQykwVUNdLwC_tr4
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM4MTY2ODJ9.n_1QtWDY-QWIBnsEc0lrpYSbngR1cV9VgE6CfZ9jMLo
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZHNhZGFzZGFkIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMjM0MjExfQ.ArcIkdnrm7m0tCBBlECwm11yHNketwr9j4hdg85ixig
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM4MzcyMTF9.Tgw9WJqtyztR-Cb4aG1CvzMjHqXI23Z3wRKSiRk1M-0
+Access-Token-Expire-Time: 1663234211387
 Content-Type: application/json
 
 {
@@ -58,8 +59,8 @@ Content-Type: application/json
 
 ######## 모든 포스트 조회
 GET http://localhost:8080/api/auth/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkbnNpZWxmIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMTM1MDU0fQ.IvZxqflpM7qM4wGmcH5XSlgVxFpm-DdiNZDausUQl5E
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM3MzgwNTR9.DXPXf36xNejrMrjaKSiAFPl46HOANdlEa80NVjlkDnw
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZHNhZGFzZGFkIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNjYzMjM0MjExfQ.ArcIkdnrm7m0tCBBlECwm11yHNketwr9j4hdg85ixig
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjM4MzcyMTF9.Tgw9WJqtyztR-Cb4aG1CvzMjHqXI23Z3wRKSiRk1M-0
 
 
 ######## 상세 포스트 조회
