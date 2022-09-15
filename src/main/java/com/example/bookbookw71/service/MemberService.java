@@ -1,9 +1,6 @@
 package com.example.bookbookw71.service;
 
-import com.example.bookbookw71.controller.request.LoginRequestDto;
-import com.example.bookbookw71.controller.request.MemberRequestDto;
-import com.example.bookbookw71.controller.request.MemberSignDto;
-import com.example.bookbookw71.controller.request.TokenDto;
+import com.example.bookbookw71.controller.request.*;
 import com.example.bookbookw71.controller.response.Message;
 import com.example.bookbookw71.dto.MemberResponseDto;
 import com.example.bookbookw71.jwt.TokenProvider;
@@ -36,7 +33,7 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
-    public ResponseEntity<Message> createMember(MemberRequestDto requestDto) {
+    public ResponseEntity<Message> createMember(MemberSignDto memberSignDto) {
         HttpHeaders headers = new HttpHeaders();
 //        if (!requestDto.getPassword().equals(requestDto.getPwdCheck())) {
 //            Message message = new Message();
@@ -45,18 +42,18 @@ public class MemberService {
 //            return new ResponseEntity<>(message,headers, HttpStatus.BAD_REQUEST);
 //        }
         Member member = Member.builder()
-                .username(requestDto.getUsername())
-                .email(requestDto.getEmail())
-                .password(passwordEncoder.encode(requestDto.getPassword()))
+                .username(memberSignDto.getUsername())
+                .email(memberSignDto.getEmail())
+                .password(passwordEncoder.encode(memberSignDto.getPassword()))
                 .role(MemberRoleEnum.MEMBER)
                 .build();
         memberRepository.save(member);
-        Message message = new Message(member);
+        Message message = new Message("회원가입 성공",200);
         return new ResponseEntity<>(message,headers,HttpStatus.OK);
     }
 
     @Transactional
-    public ResponseEntity<Message> login(LoginRequestDto requestDto, HttpServletResponse response) {
+    public ResponseEntity<Message> login(MemberLoginDto requestDto, HttpServletResponse response) {
         Member member = isPresentMember(requestDto.getEmail());
         HttpHeaders headers = new HttpHeaders();
 
@@ -113,8 +110,8 @@ public class MemberService {
     }
 
     @Transactional(readOnly = true)
-    public Member isPresentMember(String username) {
-        Optional<Member> optionalMember = memberRepository.findByUsername(username);
+    public Member isPresentMember(String email) {
+        Optional<Member> optionalMember = memberRepository.findByEmail(email);
         return optionalMember.orElse(null);
     }
 
@@ -144,40 +141,32 @@ public class MemberService {
     }
 
     @Transactional
-    public ResponseEntity<Message> idCheck(MemberSignDto memberSignDto) {
-        Optional<Member> member = memberRepository.findByUsername(memberSignDto.getUsername());
+    public ResponseEntity<Message> idCheck(MemberCheckDto memberCheckDto) {
+        Optional<Member> member = memberRepository.findByUsername(memberCheckDto.getUsername());
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("application","json", Charset.forName("UTF-8")));
 
         if(member.isPresent()){
-            Message message = new Message();
-            message.setStatus(StatusEnum.ID_DUPLICATION);
-            message.setMessage("중복된 아이디입니다.");
+            Message message=new Message(false);
             return new ResponseEntity<>(message,headers,HttpStatus.BAD_REQUEST);
         }
         else{
-            Message message = new Message(memberSignDto);
-            message.setStatus(StatusEnum.OK);
-            message.setMessage("Success");
+            Message message=new Message(true);
             return new ResponseEntity<>(message,headers,HttpStatus.OK);
         }
     }
 
-    public ResponseEntity<Message> emailCheck(MemberSignDto memberSignDto) {
-        Optional<Member> member = memberRepository.findByEmail(memberSignDto.getEmail());
+    public ResponseEntity<Message> emailCheck(MemberCheckDto memberCheckDto) {
+        Optional<Member> member = memberRepository.findByEmail(memberCheckDto.getEmail());
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("application","json", Charset.forName("UTF-8")));
 
         if(member.isPresent()){
-            Message message = new Message();
-            message.setStatus(StatusEnum.ID_DUPLICATION);
-            message.setMessage("중복된 이메일입니다.");
+            Message message=new Message(false);
             return new ResponseEntity<>(message,headers,HttpStatus.BAD_REQUEST);
         }
         else{
-            Message message = new Message(memberSignDto);
-            message.setStatus(StatusEnum.OK);
-            message.setMessage("Success");
+            Message message=new Message(true);
             return new ResponseEntity<>(message,headers,HttpStatus.OK);
         }
     }
