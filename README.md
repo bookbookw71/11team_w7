@@ -1,5 +1,5 @@
 # 북적북적📚_Back
-# Ever Rent - BE
+
 ![북북](https://user-images.githubusercontent.com/108391677/191504496-a719a9d8-c3c3-4f19-8d93-0134d65ec415.png)
 
 ## 📢 프로젝트 소개
